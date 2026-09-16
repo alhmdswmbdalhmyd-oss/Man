@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POLISH ENGINEER | العناية الاحترافية بالسيارات</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#08090b;
+    color:#f5f5f5;
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* LOADING */
+.loader{
+    position:fixed;
+    inset:0;
+    background:#08090b;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    animation:hideLoader 1s 2s forwards;
+}
+
+.loader-content{
+    text-align:center;
+}
+
+.loader-logo{
+    font-size:34px;
+    font-weight:900;
+    letter-spacing:4px;
+}
+
+.loader-line{
+    width:0;
+    height:2px;
+    background:#c9a45c;
+    margin:18px auto;
+    animation:loadLine 1.5s forwards;
+}
+
+@keyframes loadLine{
+    to{width:180px;}
+}
+
+@keyframes hideLoader{
+    to{
+        opacity:0;
+        visibility:hidden;
+    }
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    top:0;
+    right:0;
+    width:100%;
+    padding:22px 6%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    z-index:1000;
+    background:linear-gradient(to bottom,rgba(0,0,0,.85),transparent);
+}
+
+.logo{
+    font-size:21px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:#c9a45c;
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+.nav-links a{
+    color:#ddd;
+    font-size:14px;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#c9a45c;
+}
+
+.nav-btn{
+    padding:11px 20px;
+    border:1px solid #c9a45c;
+    border-radius:30px;
+    color:#c9a45c;
+}
+
+/* HERO */
+.hero{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+    background:
+        linear-gradient(rgba(0,0,0,.48),rgba(0,0,0,.82)),
+        url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=90")
+        center/cover;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:#c9a45c;
+    opacity:.08;
+    filter:blur(130px);
+    border-radius:50%;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:850px;
+    padding:20px;
+    animation:heroIn 1.3s ease;
+}
+
+@keyframes heroIn{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.hero-small{
+    color:#c9a45c;
+    letter-spacing:5px;
+    font-size:13px;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(42px,8vw,95px);
+    font-weight:900;
+    letter-spacing:5px;
+    line-height:1;
+}
+
+.hero h1 span{
+    color:#c9a45c;
+}
+
+.hero p{
+    margin:25px auto;
+    max-width:600px;
+    color:#ccc;
+    font-size:18px;
+    line-height:1.8;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:15px 30px;
+    border-radius:40px;
+    transition:.3s;
+    font-weight:bold;
+}
+
+.btn-gold{
+    background:#c9a45c;
+    color:#08090b;
+}
+
+.btn-gold:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 35px rgba(201,164,92,.25);
+}
+
+.btn-outline{
+    border:1px solid #777;
+}
+
+.btn-outline:hover{
+    border-color:#c9a45c;
+    color:#c9a45c;
+}
+
+.scroll{
+    position:absolute;
+    bottom:25px;
+    font-size:12px;
+    color:#aaa;
+}
+
+/* GENERAL */
+section{
+    padding:100px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:55px;
+}
+
+.section-title span{
+    color:#c9a45c;
+    font-size:13px;
+    letter-spacing:3px;
+}
+
+.section-title h2{
+    font-size:clamp(30px,5vw,52px);
+    margin-top:12px;
+}
+
+/* ABOUT */
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.about-img{
+    min-height:450px;
+    border-radius:25px;
+    background:
+        linear-gradient(135deg,rgba(201,164,92,.1),transparent),
+        url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80")
+        center/cover;
+}
+
+.about-text h2{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.about-text p{
+    color:#aaa;
+    line-height:2;
+}
+
+.stats{
+    display:flex;
+    gap:35px;
+    margin-top:35px;
+}
+
+.stat strong{
+    display:block;
+    color:#c9a45c;
+    font-size:30px;
+}
+
+.stat span{
+    color:#888;
+    font-size:13px;
+}
+
+/* SERVICES */
+.services{
+    background:#0c0d10;
+}
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.service{
+    padding:35px;
+    background:linear-gradient(145deg,#151619,#0b0c0e);
+    border:1px solid #202126;
+    border-radius:22px;
+    transition:.4s;
+}
+
+.service:hover{
+    transform:translateY(-10px);
+    border-color:#c9a45c;
+}
+
+.service-number{
+    color:#c9a45c;
+    font-size:14px;
+}
+
+.service h3{
+    margin:25px 0 12px;
+    font-size:23px;
+}
+
+.service p{
+    color:#888;
+    line-height:1.8;
+}
+
+/* BEFORE AFTER */
+.before-after{
+    position:relative;
+    max-width:1000px;
+    height:500px;
+    margin:auto;
+    overflow:hidden;
+    border-radius:25px;
+}
+
+.before-after img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.after{
+    clip-path:inset(0 0 0 50%);
+}
+
+.slider{
+    position:absolute;
+    top:0;
+    left:50%;
+    width:3px;
+    height:100%;
+    background:#fff;
+    cursor:ew-resize;
+    z-index:5;
+}
+
+.slider::after{
+    content:"↔";
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:45px;
+    height:45px;
+    background:#c9a45c;
+    color:#08090b;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    font-weight:bold;
+}
+
+/* WORK */
+.work{
+    background:#0c0d10;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.gallery img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    border-radius:18px;
+    transition:.4s;
+}
+
+.gallery img:hover{
+    transform:scale(1.03);
+}
+
+/* CONTACT */
+.contact-box{
+    max-width:900px;
+    margin:auto;
+    padding:60px;
+    text-align:center;
+    border:1px solid #25262a;
+    border-radius:30px;
+    background:linear-gradient(145deg,#121316,#090a0c);
+}
+
+.contact-box h2{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.contact-box p{
+    color:#999;
+    margin-bottom:30px;
+    line-height:1.8;
+}
+
+/* FOOTER */
+footer{
+    padding:35px 7%;
+    border-top:1px solid #202126;
+    display:flex;
+    justify-content:space-between;
+    color:#777;
+}
+
+/* MOBILE */
+@media(max-width:800px){
+
+    nav{
+        padding:18px 5%;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    section{
+        padding:75px 5%;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .about-img{
+        min-height:300px;
+    }
+
+    .about-text h2{
+        font-size:32px;
+    }
+
+    .service-grid{
+        grid-template-columns:1fr;
+    }
+
+    .gallery{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .gallery img{
+        height:190px;
+    }
+
+    .before-after{
+        height:330px;
+    }
+
+    .contact-box{
+        padding:35px 20px;
+    }
+
+    .contact-box h2{
+        font-size:30px;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:12px;
+        text-align:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="loader">
+    <div class="loader-content">
+        <div class="loader-logo">POLISH <span>ENGINEER</span></div>
+        <div class="loader-line"></div>
+    </div>
+</div>
+
+<nav>
+    <div class="logo">POLISH <span>ENGINEER</span></div>
+
+    <ul class="nav-links">
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#about">من نحن</a></li>
+        <li><a href="#services">الخدمات</a></li>
+        <li><a href="#work">أعمالنا</a></li>
+        <li><a href="#contact">التواصل</a></li>
+    </ul>
+
+    <a href="#contact" class="nav-btn">احجز الآن</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="hero-small">PROFESSIONAL AUTOMOTIVE CARE</div>
+
+        <h1>
+            POLISH<br>
+            <span>ENGINEER</span>
+        </h1>
+
+        <p>
+            عناية احترافية لسيارتك...
+            لأن التفاصيل الصغيرة تصنع الفرق الكبير.
+        </p>
+
+        <div class="buttons">
+            <a href="#services" class="btn btn-gold">اكتشف خدماتنا</a>
+            <a href="#contact" class="btn btn-outline">احجز موعدك</a>
+        </div>
+    </div>
+
+    <div class="scroll">مرر للأسفل ↓</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="about">
+
+        <div class="about-img"></div>
+
+        <div class="about-text">
+            <div class="section-title" style="text-align:right;margin-bottom:20px;">
+                <span>ABOUT US</span>
+                <h2>العناية<br>بمستوى مختلف</h2>
+            </div>
+
+            <p>
+                نقدم تجربة متخصصة في العناية بالسيارات،
+                مع اهتمام بالتفاصيل وجودة التنفيذ، من أول
+                خطوة وحتى استلام سيارتك.
+            </p>
+
+            <div class="stats">
+                <div class="stat">
+                    <strong>4.9★</strong>
+                    <span>تقييم العملاء</span>
+                </div>
+
+                <div class="stat">
+                    <strong>400+</strong>
+                    <span>تقييم</span>
+                </div>
+
+                <div class="stat">
+                    <strong>100%</strong>
+                    <span>اهتمام بالتفاصيل</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+
+    <div class="section-title">
+        <span>OUR SERVICES</span>
+        <h2>خدماتنا</h2>
+    </div>
+
+    <div class="service-grid">
+
+        <div class="service">
+            <div class="service-number">01</div>
+            <h3>تلميع السيارات</h3>
+            <p>عناية احترافية بمظهر السيارة وإبراز لمعان الطلاء.</p>
+        </div>
+
+        <div class="service">
+            <div class="service-number">02</div>
+            <h3>العناية الخارجية</h3>
+            <p>تنظيف وعناية دقيقة بالتفاصيل الخارجية للسيارة.</p>
+        </div>
+
+        <div class="service">
+            <div class="service-number">03</div>
+            <h3>العناية الداخلية</h3>
+            <p>تنظيف وترتيب المقصورة الداخلية بعناية.</p>
+        </div>
+
+        <div class="service">
+            <div class="service-number">04</div>
+            <h3>حماية الطلاء</h3>
+            <p>خدمات مخصصة للمحافظة على مظهر الطلاء.</p>
+        </div>
+
+        <div class="service">
+            <div class="service-number">05</div>
+            <h3>تظليل السيارات</h3>
+            <p>عرض خيارات التظليل والخدمات المتوفرة.</p>
+        </div>
+
+        <div class="service">
+            <div class="service-number">06</div>
+            <h3>العناية المتكاملة</h3>
+            <p>حلول متكاملة للعناية بسيارتك حسب احتياجها.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- BEFORE AFTER -->
+<section>
+
+    <div class="section-title">
+        <span>THE DIFFERENCE</span>
+        <h2>شاهد الفرق بنفسك</h2>
+    </div>
+
+    <div class="before-after" id="compare">
+
+        <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1600&q=80">
+
+        <img class="after"
+             src="https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=1600&q=80">
+
+        <div class="slider" id="slider"></div>
+
+    </div>
+
+</section>
+
+<!-- WORK -->
+<section class="work" id="work">
+
+    <div class="section-title">
+        <span>OUR WORK</span>
+        <h2>أعمالنا</h2>
+    </div>
+
+    <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1000&q=80">
+        <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1000&q=80">
+        <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1000&q=80">
+        <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1000&q=80">
+        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=80">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80">
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+
+    <div class="contact-box">
+
+        <div class="section-title">
+            <span>BOOK YOUR VISIT</span>
+            <h2>جاهز تعطي سيارتك العناية التي تستحقها؟</h2>
+        </div>
+
+        <p>
+            تواصل معنا لمعرفة الخدمات المتوفرة وحجز موعدك.
+        </p>
+
+        <div class="buttons">
+
+            <a class="btn btn-gold"
+               href="https://wa.me/966504243448"
+               target="_blank">
+                تواصل عبر واتساب
+            </a>
+
+            <a class="btn btn-outline"
+               href="tel:+966504243448">
+                اتصل الآن
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    <div>© 2026 POLISH ENGINEER</div>
+    <div>Professional Automotive Care</div>
+</footer>
+
+<script>
+
+/* BEFORE / AFTER SLIDER */
+
+const compare = document.getElementById("compare");
+const slider = document.getElementById("slider");
+const after = document.querySelector(".after");
+
+let dragging = false;
+
+function moveSlider(x){
+
+    const rect = compare.getBoundingClientRect();
+
+    let position = ((x - rect.left) / rect.width) * 100;
+
+    position = Math.max(0, Math.min(100, position));
+
+    slider.style.left = position + "%";
+    after.style.clipPath = `inset(0 0 0 ${position}%)`;
+}
+
+slider.addEventListener("mousedown",()=>{
+    dragging=true;
+});
+
+window.addEventListener("mouseup",()=>{
+    dragging=false;
+});
+
+window.addEventListener("mousemove",(e)=>{
+    if(dragging){
+        moveSlider(e.clientX);
+    }
+});
+
+slider.addEventListener("touchstart",()=>{
+    dragging=true;
+});
+
+window.addEventListener("touchend",()=>{
+    dragging=false;
+});
+
+window.addEventListener("touchmove",(e)=>{
+    if(dragging){
+        moveSlider(e.touches[0].clientX);
+    }
+});
+
+</script>
+
+</body>
+</html>
