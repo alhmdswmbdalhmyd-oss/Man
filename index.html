@@ -2,385 +2,214 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>تحدّاك</title>
 
 <style>
 *{box-sizing:border-box}
 :root{
-  --bg:#090713;
-  --card:#151025;
-  --card2:#1d1632;
-  --purple:#8b5cf6;
-  --cyan:#22d3ee;
-  --gold:#fbbf24;
-  --green:#22c55e;
-  --red:#ef4444;
-  --text:#fff;
-  --muted:#aaa4bd;
+ --bg:#090713;--card:#151025;--card2:#1d1632;
+ --purple:#8b5cf6;--cyan:#22d3ee;--gold:#fbbf24;
+ --green:#22c55e;--red:#ef4444;--muted:#aaa4bd
 }
 body{
-  margin:0;
-  background:
-    radial-gradient(circle at 20% 10%,#241344 0,transparent 30%),
-    radial-gradient(circle at 90% 80%,#082c38 0,transparent 30%),
-    var(--bg);
-  color:var(--text);
-  font-family:Tahoma,Arial,sans-serif;
-  min-height:100vh;
+ margin:0;background:
+ radial-gradient(circle at 15% 10%,#29164b,transparent 30%),
+ radial-gradient(circle at 90% 80%,#06313d,transparent 30%),
+ var(--bg);
+ color:#fff;font-family:Tahoma,Arial,sans-serif;
+ min-height:100vh
 }
-button,input{
-  font:inherit;
-}
-button{
-  border:0;
-  cursor:pointer;
-}
-.app{
-  width:100%;
-  max-width:600px;
-  margin:auto;
-  min-height:100vh;
-  padding-bottom:90px;
-}
+button,input{font:inherit}
+button{border:0;cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}
+.app{width:100%;max-width:650px;margin:auto;min-height:100vh;padding-bottom:90px}
 header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  padding:15px;
-  background:rgba(9,7,19,.9);
-  backdrop-filter:blur(15px);
-  border-bottom:1px solid #29213c;
+ position:sticky;top:0;z-index:50;padding:14px;
+ background:#090713ee;backdrop-filter:blur(15px);
+ border-bottom:1px solid #302648
 }
-.logo{
-  font-size:28px;
-  font-weight:900;
-  text-align:center;
-  letter-spacing:1px;
-}
+.logo{text-align:center;font-size:28px;font-weight:900}
 .logo span{color:var(--cyan)}
-.logo small{
-  display:block;
-  color:var(--muted);
-  font-size:11px;
-  margin-top:3px;
-}
-.screen{display:none;padding:18px}
+.logo small{display:block;color:#999;font-size:11px;margin-top:3px}
+.screen{display:none;padding:16px}
 .screen.active{display:block}
 .card{
-  background:linear-gradient(145deg,rgba(29,22,50,.98),rgba(16,13,29,.98));
-  border:1px solid #302648;
-  border-radius:22px;
-  padding:18px;
-  margin-bottom:14px;
-  box-shadow:0 12px 35px #0004;
+ background:linear-gradient(145deg,#1d1632,#100d1d);
+ border:1px solid #302648;border-radius:21px;
+ padding:17px;margin-bottom:13px;
+ box-shadow:0 12px 35px #0005
 }
-.hero{
-  padding:28px 18px;
-  text-align:center;
-}
-.hero h1{
-  font-size:42px;
-  margin:5px 0 8px;
-}
+.hero{text-align:center;padding:28px 18px}
+.hero h1{font-size:42px;margin:5px 0}
 .hero h1 span{color:var(--cyan)}
-.hero p{
-  color:var(--muted);
-  line-height:1.8;
-}
+.hero p{color:#aaa;line-height:1.8}
 .btn{
-  width:100%;
-  padding:14px;
-  border-radius:15px;
-  margin-top:9px;
-  color:white;
-  font-weight:800;
-  background:linear-gradient(135deg,var(--purple),#5b21b6);
-  box-shadow:0 7px 20px #7c3aed44;
+ width:100%;padding:14px;border-radius:15px;margin-top:9px;
+ color:#fff;font-weight:900;
+ background:linear-gradient(135deg,var(--purple),#5b21b6)
 }
-.btn.secondary{
-  background:#27203b;
-  box-shadow:none;
-}
-.btn.green{
-  background:linear-gradient(135deg,#16a34a,#15803d);
-}
-.btn.gold{
-  background:linear-gradient(135deg,#f59e0b,#d97706);
-  color:#17100a;
-}
-.btn.red{
-  background:linear-gradient(135deg,#ef4444,#b91c1c);
-}
+.btn.green{background:linear-gradient(135deg,#16a34a,#15803d)}
+.btn.gold{background:linear-gradient(135deg,#f59e0b,#d97706);color:#17100a}
+.btn.red{background:linear-gradient(135deg,#ef4444,#991b1b)}
+.btn.secondary{background:#29213d}
 .btn:active{transform:scale(.98)}
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:9px;
-}
-.stat{
-  background:#100c1d;
-  border:1px solid #302648;
-  border-radius:16px;
-  padding:13px 5px;
-  text-align:center;
-}
-.stat b{
-  display:block;
-  font-size:20px;
-  color:var(--cyan);
-}
-.stat span{
-  color:var(--muted);
-  font-size:11px;
-}
-.section-title{
-  font-size:20px;
-  font-weight:900;
-  margin:20px 0 12px;
-}
-.categories{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-}
-.category{
-  min-height:95px;
-  border-radius:18px;
-  padding:15px;
-  color:#fff;
-  text-align:right;
-  border:1px solid #392d55;
-  background:#171126;
-}
-.category strong{
-  display:block;
-  font-size:16px;
-  margin-bottom:6px;
-}
-.category span{
-  color:#aaa;
-  font-size:11px;
-}
-.category.active{
-  border-color:var(--cyan);
-  box-shadow:0 0 20px #22d3ee22;
-}
-.challenge{
-  position:relative;
-  overflow:hidden;
-}
-.challenge:before{
-  content:"";
-  position:absolute;
-  width:130px;
-  height:130px;
-  border:12px solid #8b5cf622;
-  border-radius:50%;
-  top:-70px;
-  left:-60px;
-}
-.challenge h2{
-  position:relative;
-  font-size:25px;
-  line-height:1.6;
-}
-.badge{
-  display:inline-block;
-  padding:6px 10px;
-  border-radius:30px;
-  background:#8b5cf622;
-  color:#c4b5fd;
-  font-size:12px;
-}
 input{
-  width:100%;
-  padding:14px;
-  border-radius:14px;
-  border:1px solid #382e50;
-  background:#0d0a18;
-  color:#fff;
-  outline:none;
-  margin-bottom:9px;
+ width:100%;padding:14px;border-radius:14px;
+ border:1px solid #3a3051;background:#0d0a18;
+ color:#fff;outline:0;margin-bottom:9px
 }
 input:focus{border-color:var(--cyan)}
-.wheel-area{
-  text-align:center;
-  padding:10px 0 20px;
+.section-title{font-size:20px;font-weight:900;margin:20px 0 12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{
+ background:#100c1d;border:1px solid #302648;
+ border-radius:15px;padding:12px 4px;text-align:center
 }
-.wheel-wrap{
-  width:min(88vw,350px);
-  height:min(88vw,350px);
-  margin:20px auto;
-  position:relative;
+.stat b{display:block;color:var(--cyan);font-size:21px}
+.stat span{font-size:11px;color:#888}
+.categories{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.category{
+ min-height:90px;border-radius:17px;padding:14px;
+ text-align:right;color:#fff;background:#171126;
+ border:1px solid #392d55
 }
-.pointer{
-  position:absolute;
-  top:-12px;
-  left:50%;
-  transform:translateX(-50%);
-  z-index:5;
-  width:0;
-  height:0;
-  border-left:18px solid transparent;
-  border-right:18px solid transparent;
-  border-top:35px solid var(--gold);
-  filter:drop-shadow(0 4px 5px #000);
+.category.active{border-color:var(--cyan);box-shadow:0 0 20px #22d3ee22}
+.category strong{display:block;margin-bottom:6px}
+.category small{color:#999}
+.badge{
+ display:inline-block;padding:6px 10px;border-radius:30px;
+ background:#8b5cf622;color:#c4b5fd;font-size:12px
 }
-.wheel{
-  width:100%;
-  height:100%;
-  border-radius:50%;
-  position:relative;
-  border:8px solid #312448;
-  box-shadow:0 0 35px #000, inset 0 0 30px #000;
-  transition:transform 4s cubic-bezier(.12,.75,.16,1);
-  overflow:hidden;
-  background:#211736;
-}
-.wheel-sector{
-  position:absolute;
-  width:50%;
-  height:50%;
-  top:0;
-  left:50%;
-  transform-origin:0% 100%;
-  clip-path:polygon(0 100%,100% 0,0 0);
-  display:flex;
-  align-items:flex-start;
-  justify-content:center;
-  padding-top:15px;
-}
-.wheel-sector span{
-  transform:rotate(22deg);
-  font-size:11px;
-  font-weight:900;
-  white-space:nowrap;
-}
-.wheel-center{
-  position:absolute;
-  width:70px;
-  height:70px;
-  border-radius:50%;
-  background:#0d0a18;
-  border:5px solid var(--gold);
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  z-index:3;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:900;
-  font-size:12px;
-}
-.selected{
-  border:1px solid #22d3ee66;
-  background:#062a32;
-}
-.timer{
-  font-size:48px;
-  text-align:center;
-  font-weight:900;
-  color:var(--gold);
-  margin:10px 0;
-}
-.message{
-  padding:12px;
-  background:#0e0b19;
-  border:1px solid #2e2742;
-  border-radius:14px;
-  margin-bottom:8px;
-}
-.message b{color:var(--cyan)}
-.message small{
-  display:block;
-  color:#777;
-  margin-top:5px;
-}
-.nav{
-  position:fixed;
-  bottom:0;
-  left:50%;
-  transform:translateX(-50%);
-  width:min(600px,100%);
-  z-index:100;
-  background:rgba(13,10,24,.95);
-  backdrop-filter:blur(15px);
-  border-top:1px solid #302648;
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  padding:8px 5px calc(8px + env(safe-area-inset-bottom));
-}
-.nav button{
-  background:none;
-  color:#888;
-  padding:6px 2px;
-  font-size:10px;
-}
-.nav button.active{color:var(--cyan)}
-.nav i{
-  display:block;
-  font-style:normal;
-  font-size:21px;
-  margin-bottom:2px;
-}
-.toast{
-  position:fixed;
-  top:75px;
-  left:50%;
-  transform:translateX(-50%) translateY(-20px);
-  opacity:0;
-  pointer-events:none;
-  z-index:200;
-  background:#211936;
-  border:1px solid #493a68;
-  padding:13px 18px;
-  border-radius:14px;
-  transition:.3s;
-  width:90%;
-  max-width:400px;
-  text-align:center;
-}
-.toast.show{
-  opacity:1;
-  transform:translateX(-50%) translateY(0);
-}
-.empty{
-  text-align:center;
-  color:#777;
-  padding:30px 10px;
-}
-.row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.hidden{display:none!important}
+.empty{text-align:center;color:#777;padding:25px}
+
 .player{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:10px;
-  background:#100c1d;
-  border-radius:13px;
-  margin-bottom:7px;
+ display:flex;align-items:center;gap:9px;
+ background:#100c1d;border:1px solid #28213b;
+ border-radius:14px;padding:10px;margin-bottom:8px
 }
 .avatar{
-  width:38px;
-  height:38px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(135deg,var(--purple),var(--cyan));
-  font-weight:900;
+ width:40px;height:40px;border-radius:50%;
+ display:flex;align-items:center;justify-content:center;
+ background:linear-gradient(135deg,var(--purple),var(--cyan));
+ font-weight:900
 }
-.points{
-  color:var(--gold);
-  font-weight:900;
+.player-info{flex:1}
+.player-info small{display:block;color:#777;margin-top:3px}
+.points{color:var(--gold);font-weight:900}
+
+.wheel-area{text-align:center}
+.wheel-wrap{
+ width:min(88vw,370px);height:min(88vw,370px);
+ margin:25px auto;position:relative
 }
-.hidden{display:none!important}
+.pointer{
+ position:absolute;z-index:10;top:-12px;left:50%;
+ transform:translateX(-50%);
+ width:0;height:0;
+ border-left:20px solid transparent;
+ border-right:20px solid transparent;
+ border-top:38px solid var(--gold);
+ filter:drop-shadow(0 4px 4px #000)
+}
+.wheel{
+ width:100%;height:100%;border-radius:50%;
+ border:8px solid #33274c;
+ box-shadow:0 0 35px #000,inset 0 0 30px #000;
+ position:relative;overflow:hidden;
+ transition:transform 4s cubic-bezier(.12,.75,.16,1)
+}
+.sector{
+ position:absolute;
+ width:50%;height:50%;top:0;left:50%;
+ transform-origin:0% 100%;
+ clip-path:polygon(0 100%,100% 0,0 0);
+ display:flex;justify-content:center;align-items:flex-start;
+ padding-top:14px
+}
+.sector span{
+ font-weight:900;font-size:11px;
+ white-space:nowrap;display:block
+}
+.center{
+ position:absolute;z-index:20;left:50%;top:50%;
+ transform:translate(-50%,-50%);
+ width:75px;height:75px;border-radius:50%;
+ background:#0d0a18;border:5px solid var(--gold);
+ display:flex;align-items:center;justify-content:center;
+ font-weight:900;font-size:12px
+}
+
+.current-player{
+ text-align:center;
+ padding:15px;border-radius:17px;
+ background:#071c25;border:1px solid #22d3ee55
+}
+.current-player b{font-size:30px;color:var(--cyan)}
+
+.question{
+ padding:18px;border-radius:18px;
+ background:#100c1d;border:1px solid #302648;
+ margin-top:12px
+}
+.question h2{line-height:1.7;font-size:22px}
+.answer-buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.answer-buttons button{margin-top:0}
+.status{text-align:center;font-weight:900;margin:10px}
+.correct{color:var(--green)}
+.wrong{color:var(--red)}
+
+.result{text-align:center}
+.winner{
+ font-size:42px;color:var(--gold);
+ font-weight:900;margin:12px
+}
+.ranking-item{
+ display:flex;align-items:center;gap:10px;
+ padding:12px;background:#100c1d;
+ border-radius:13px;margin:7px 0
+}
+.ranking-item .name{flex:1}
+.ranking-item strong{color:var(--gold)}
+
+.message{
+ padding:12px;background:#100c1d;
+ border:1px solid #302648;border-radius:13px;margin-bottom:8px
+}
+.message b{color:var(--cyan)}
+.message small{display:block;color:#777;margin-top:4px}
+
+.nav{
+ position:fixed;bottom:0;left:50%;
+ transform:translateX(-50%);
+ width:min(650px,100%);z-index:100;
+ display:grid;grid-template-columns:repeat(5,1fr);
+ background:#0d0a18f5;
+ backdrop-filter:blur(15px);
+ border-top:1px solid #302648;
+ padding:7px 4px calc(7px + env(safe-area-inset-bottom))
+}
+.nav button{background:none;color:#777;font-size:10px;padding:5px}
+.nav button.active{color:var(--cyan)}
+.nav i{font-style:normal;font-size:21px;display:block;margin-bottom:2px}
+
+.toast{
+ position:fixed;z-index:300;top:75px;left:50%;
+ transform:translate(-50%,-20px);
+ opacity:0;pointer-events:none;
+ width:90%;max-width:400px;text-align:center;
+ padding:13px;border-radius:14px;
+ background:#211936;border:1px solid #493a68;
+ transition:.3s
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+.timer{
+ text-align:center;font-size:42px;
+ font-weight:900;color:var(--gold)
+}
 </style>
 </head>
 
@@ -389,1086 +218,1419 @@ input:focus{border-color:var(--cyan)}
 <div class="app">
 
 <header>
-  <div class="logo">تحدّ<span>اك</span><small>تحدّاك... إذا تقدر 😈</small></div>
+ <div class="logo">تحدّ<span>اك</span>
+  <small>تحدّاك... إذا تقدر 😈</small>
+ </div>
 </header>
 
-<!-- HOME -->
+<!-- الرئيسية -->
 <section id="home" class="screen active">
 
-  <div class="card hero">
-    <div style="font-size:55px">🎯</div>
-    <h1>تحدّ<span>اك</span></h1>
-    <p>
-      لعبة تحديات سريعة للجلسات والأصدقاء.
-      اختر القسم، لف العجلة، وخذ تحديك.
-    </p>
-    <button class="btn" onclick="showScreen('game')">ابدأ اللعب</button>
-    <button class="btn secondary" onclick="showScreen('categories')">استكشف التحديات</button>
-  </div>
+ <div class="card hero">
+  <div style="font-size:58px">🎯</div>
+  <h1>تحدّ<span>اك</span></h1>
+  <p>
+   لعبة جماعية محلية.
+   أضف أصحابك، لف عجلة الأسماء،
+   ثم يظهر تحدي للاعب الذي اختارته العجلة.
+  </p>
+  <button class="btn" onclick="showScreen('game')">ابدأ اللعب</button>
+  <button class="btn secondary" onclick="showScreen('categories')">الأقسام</button>
+ </div>
 
-  <div class="stats">
-    <div class="stat"><b id="homePoints">0</b><span>النقاط</span></div>
-    <div class="stat"><b id="homeCoins">0</b><span>العملات</span></div>
-    <div class="stat"><b id="homeWins">0</b><span>الإنجازات</span></div>
-  </div>
+ <div class="stats">
+  <div class="stat"><b id="homePoints">0</b><span>نقاطي</span></div>
+  <div class="stat"><b id="homeWins">0</b><span>فوزي</span></div>
+  <div class="stat"><b id="homeRounds">0</b><span>الجولات</span></div>
+ </div>
 
-  <div class="section-title">🔥 تحدي اليوم</div>
+ <div class="section-title">🔥 تحدي اليوم</div>
 
-  <div class="card challenge">
-    <span class="badge" id="dailyBadge">تحدي اليوم</span>
-    <h2 id="dailyText"></h2>
-    <div class="row">
-      <span style="color:#999">+100 نقطة</span>
-      <span style="color:var(--gold)">🪙 +10</span>
-    </div>
-    <button id="dailyBtn" class="btn gold" onclick="completeDaily()">أنجزت تحدي اليوم</button>
-  </div>
+ <div class="card">
+  <span class="badge">تحدي اليوم</span>
+  <h2 id="dailyText"></h2>
+  <button id="dailyBtn" class="btn gold" onclick="completeDaily()">
+   أنجزت التحدي
+  </button>
+ </div>
 
 </section>
 
-<!-- CATEGORIES -->
+<!-- الأقسام -->
 <section id="categories" class="screen">
-  <div class="section-title">🎲 الأقسام</div>
-  <div id="categoryGrid" class="categories"></div>
 
-  <div class="section-title">التحدي المختار</div>
-  <div id="categoryChallenge" class="card challenge">
-    <span class="badge">اختر قسمًا</span>
-    <h2>اختر قسمًا لعرض تحدي واحد فقط.</h2>
-  </div>
+ <div class="section-title">🎲 الأقسام</div>
+ <div id="categoryGrid" class="categories"></div>
+
+ <div class="section-title">التحدي المختار</div>
+
+ <div id="categoryPreview" class="card">
+  <span class="badge">اختر قسمًا</span>
+  <h2>اضغط على أي قسم لعرض تحدي منه.</h2>
+ </div>
+
 </section>
 
-<!-- GAME -->
+<!-- اللعبة -->
 <section id="game" class="screen">
 
-  <div class="card">
-    <div class="row">
-      <div>
-        <b>الوضع المحلي</b>
-        <div style="font-size:11px;color:#888">يعمل بدون Firebase وبدون إنترنت</div>
-      </div>
-      <span style="color:var(--green)">● يعمل</span>
-    </div>
+ <div class="card">
+  <div class="row">
+   <div>
+    <b>🎮 الوضع المحلي</b>
+    <small style="display:block;color:#777;margin-top:4px">
+     لا حسابات ولا Firebase ولا إنترنت
+    </small>
+   </div>
+   <b style="color:var(--green)">● جاهز</b>
   </div>
+ </div>
 
-  <div class="section-title">🎡 العجلة</div>
+ <div class="section-title">👥 اللاعبون</div>
+
+ <div class="card">
+
+  <input id="playerInput" placeholder="اكتب اسم اللاعب: أحمد">
+
+  <button class="btn" onclick="addPlayer()">
+   ➕ إضافة اللاعب
+  </button>
+
+  <div id="playersList" style="margin-top:12px"></div>
+
+  <button id="startBtn" class="btn green" onclick="startGame()">
+   🚀 ابدأ اللعبة
+  </button>
+
+ </div>
+
+ <!-- عجلة الأسماء -->
+ <div id="wheelSection" class="hidden">
+
+  <div class="section-title">🎡 عجلة اللاعبين</div>
 
   <div class="card wheel-area">
 
-    <div class="wheel-wrap">
-      <div class="pointer"></div>
-      <div id="wheel" class="wheel">
-        <div class="wheel-center">لفّها</div>
-      </div>
-    </div>
+   <div class="wheel-wrap">
+    <div class="pointer"></div>
 
-    <div id="wheelStatus" style="color:#aaa">
-      العجلة ستختار قسمًا من الأقسام الظاهرة.
+    <div id="wheel" class="wheel">
+     <div class="center">لفّها</div>
     </div>
+   </div>
 
-    <button id="spinBtn" class="btn" onclick="spinWheel()">🎡 لف العجلة</button>
+   <div id="wheelText" style="color:#aaa">
+    السهم سيحدد اللاعب فعليًا.
+   </div>
+
+   <button id="spinBtn" class="btn" onclick="spinWheel()">
+    🎡 لف العجلة
+   </button>
+
   </div>
 
-  <div id="selectedCategoryCard" class="card selected hidden">
-    <span class="badge">القسم المختار</span>
-    <h2 id="selectedCategoryName"></h2>
+ </div>
 
-    <div class="challenge" style="margin-top:15px">
-      <span class="badge">التحدي</span>
-      <h2 id="activeChallenge"></h2>
-    </div>
+ <!-- اللاعب الحالي والسؤال -->
+ <div id="challengeSection" class="hidden">
 
-    <div id="timer" class="timer hidden">30</div>
-
-    <button id="startChallengeBtn" class="btn green" onclick="startChallenge()">
-      ▶️ ابدأ التحدي
-    </button>
-
-    <button id="completeChallengeBtn" class="btn gold hidden" onclick="completeChallenge()">
-      ✅ أنجزت التحدي
-    </button>
-
-    <button id="nextChallengeBtn" class="btn secondary hidden" onclick="nextChallenge()">
-      🔄 تحدي آخر
-    </button>
-  </div>
-
-  <div class="section-title">👥 اللاعبون</div>
   <div class="card">
-    <div id="players"></div>
-    <button class="btn secondary" onclick="addLocalPlayer()">➕ إضافة لاعب</button>
+
+   <div class="current-player">
+    <span style="color:#aaa">اللاعب المختار</span>
+    <br>
+    <b id="currentPlayer"></b>
+   </div>
+
+   <div class="question">
+
+    <div id="questionCounter"
+         style="color:var(--gold);font-weight:900">
+    </div>
+
+    <span id="questionCategory" class="badge">تحدي</span>
+
+    <h2 id="questionText"></h2>
+
+    <div id="answerStatus" class="status"></div>
+
+    <div class="answer-buttons">
+
+     <button id="correctBtn"
+             class="btn green"
+             onclick="answer(true)">
+      ✅ صح
+     </button>
+
+     <button id="wrongBtn"
+             class="btn red"
+             onclick="answer(false)">
+      ❌ خطأ
+     </button>
+
+    </div>
+
+   </div>
+
   </div>
+
+ </div>
+
+ <!-- النتيجة -->
+ <div id="resultSection" class="hidden">
+
+  <div class="card result">
+
+   <div style="font-size:60px">🏆</div>
+
+   <h2>انتهت الجولة</h2>
+
+   <div style="color:#aaa">الفائز</div>
+
+   <div id="winner" class="winner"></div>
+
+   <div id="winnerPoints"
+        style="color:var(--cyan);font-size:22px;font-weight:900">
+   </div>
+
+   <div id="ranking"></div>
+
+   <button class="btn" onclick="newRound()">
+    🔄 جولة جديدة
+   </button>
+
+  </div>
+
+ </div>
 
 </section>
 
-<!-- MESSAGES -->
+<!-- الرسائل -->
 <section id="messages" class="screen">
-  <div class="section-title">💬 الرسائل</div>
 
-  <div class="card">
-    <input id="messageInput" placeholder="اكتب رسالة...">
-    <button class="btn" onclick="sendMessage()">إرسال</button>
-  </div>
+ <div class="section-title">💬 الرسائل</div>
 
-  <div id="messageList"></div>
+ <div class="card">
+  <input id="messageInput" placeholder="اكتب رسالة">
+  <button class="btn" onclick="sendMessage()">إرسال</button>
+ </div>
+
+ <div id="messagesList"></div>
+
 </section>
 
-<!-- LEADERBOARD -->
+<!-- المتصدرون -->
 <section id="leaderboard" class="screen">
-  <div class="section-title">🏆 المتصدرون</div>
 
-  <div class="card">
-    <div id="leaderboardList"></div>
-  </div>
+ <div class="section-title">🏆 نتائج اللاعبين</div>
 
-  <button class="btn secondary" onclick="resetLocalGame()">إعادة ضبط بيانات اللعبة</button>
+ <div class="card">
+  <div id="leaderboard"></div>
+ </div>
+
+ <button class="btn red" onclick="resetAll()">
+  🗑️ مسح بيانات اللعبة
+ </button>
+
 </section>
 
-<!-- PROFILE -->
+<!-- الحساب -->
 <section id="profile" class="screen">
 
-  <div class="section-title">👤 حسابي</div>
+ <div class="section-title">🎮 اللعبة المحلية</div>
 
-  <div class="card">
-    <input id="playerName" placeholder="اسمك">
-    <button class="btn" onclick="saveName()">حفظ الاسم</button>
-  </div>
+ <div class="card">
 
-  <div class="card">
-    <div class="stats">
-      <div class="stat"><b id="profilePoints">0</b><span>النقاط</span></div>
-      <div class="stat"><b id="profileCoins">0</b><span>العملات</span></div>
-      <div class="stat"><b id="profileWins">0</b><span>الإنجازات</span></div>
-    </div>
-  </div>
+  <h3>لا يوجد تسجيل دخول</h3>
 
-  <div class="card">
-    <b>وضع اللعبة</b>
-    <p style="color:#aaa;font-size:13px;line-height:1.7">
-      أنت الآن تستخدم الوضع المحلي. جميع النقاط والتحديات والرسائل محفوظة
-      على هذا الجهاز باستخدام LocalStorage، لذلك لا تحتاج Firebase.
-    </p>
-  </div>
+  <p style="color:#aaa;line-height:1.8">
+   هذه النسخة تعمل مباشرة بدون بريد إلكتروني
+   وبدون كلمة مرور وبدون حسابات.
+   كل شيء محفوظ على هذا الجهاز فقط.
+  </p>
+
+ </div>
 
 </section>
 
 </div>
 
 <nav class="nav">
-  <button class="active" data-screen="home" onclick="showScreen('home')">
-    <i>🏠</i>الرئيسية
-  </button>
-  <button data-screen="game" onclick="showScreen('game')">
-    <i>🎡</i>اللعب
-  </button>
-  <button data-screen="messages" onclick="showScreen('messages')">
-    <i>💬</i>الرسائل
-  </button>
-  <button data-screen="leaderboard" onclick="showScreen('leaderboard')">
-    <i>🏆</i>المتصدرون
-  </button>
-  <button data-screen="profile" onclick="showScreen('profile')">
-    <i>👤</i>حسابي
-  </button>
+
+ <button class="active" data-screen="home" onclick="showScreen('home')">
+  <i>🏠</i>الرئيسية
+ </button>
+
+ <button data-screen="game" onclick="showScreen('game')">
+  <i>🎡</i>اللعب
+ </button>
+
+ <button data-screen="messages" onclick="showScreen('messages')">
+  <i>💬</i>الرسائل
+ </button>
+
+ <button data-screen="leaderboard" onclick="showScreen('leaderboard')">
+  <i>🏆</i>النتائج
+ </button>
+
+ <button data-screen="profile" onclick="showScreen('profile')">
+  <i>⚙️</i>اللعبة
+ </button>
+
 </nav>
 
 <div id="toast" class="toast"></div>
 
 <script>
-/* =========================================================
-   تحدّاك - LOCAL MODE
+
+/* =====================================================
+   تحدّاك
+   LOCAL MODE
+   لا حساب
    لا Firebase
    لا إنترنت
-   لا تحديات مكررة في نفس الدورة
-   ========================================================= */
+   ===================================================== */
 
-const CATEGORIES = {
+const STORAGE="TAHDAK_LOCAL_FINAL_V1";
 
-  speed:{
-    name:"⚡ سرعة",
-    color:"#7c3aed",
-    challenges:[
-      "قل أسماء 5 أشياء تبدأ بحرف م خلال 10 ثوانٍ.",
-      "صفّق 10 مرات بسرعة ثم قل اسمك.",
-      "اذكر 5 ألوان في 5 ثوانٍ.",
-      "قل أيام الأسبوع بالعكس.",
-      "اذكر 5 فواكه بأسرع ما تستطيع.",
-      "قل 5 مدن في 10 ثوانٍ.",
-      "قل 5 حيوانات بسرعة.",
-      "اذكر 5 أشياء موجودة حولك.",
-      "قل 5 كلمات تنتهي بحرف ن.",
-      "اذكر 5 أرقام عشوائية ثم أعدها بالعكس.",
-      "قل اسم 5 أفلام أو مسلسلات تعرفها.",
-      "اذكر 5 أدوات مدرسية.",
-      "قل 5 أسماء أولاد.",
-      "قل 5 أسماء بنات.",
-      "اذكر 5 أكلات شعبية.",
-      "قل 5 دول آسيوية.",
-      "اذكر 5 أشياء لونها أبيض.",
-      "قل 5 كلمات من ثلاثة أحرف.",
-      "اذكر 5 رياضات.",
-      "قل 5 أشياء تستخدمها يوميًا."
-    ]
-  },
+/* ================================
+   الأقسام والتحديات
+   ================================ */
 
-  intelligence:{
-    name:"🧠 ذكاء",
-    color:"#2563eb",
-    challenges:[
-      "اذكر شيئًا له أسنان ولا يعض.",
-      "ما الشيء الذي يمشي بلا أرجل؟",
-      "إذا كان لديك 3 تفاحات وأخذت 2، كم تفاحة معك؟",
-      "ما الشيء الذي كلما أخذت منه كبر؟",
-      "اذكر كلمة إذا حذفت أول حرف منها بقي معناها قريبًا.",
-      "لديك 10 ريال وصرفت 4، كم بقي؟",
-      "ما العدد التالي: 2، 4، 6، 8؟",
-      "ما العدد التالي: 5، 10، 15، 20؟",
-      "اذكر ثلاثة أشياء لا تستطيع لمسها.",
-      "ما الشيء الذي يسمع بلا أذن؟",
-      "ما الشيء الذي يكتب ولا يقرأ؟",
-      "اذكر حلًا لمشكلة تأخر شخص عن موعده.",
-      "رتب: دقيقة، ساعة، ثانية، يوم.",
-      "اذكر ثلاثة استخدامات للورق.",
-      "ما الشيء الذي كلما زاد نقص؟",
-      "اذكر شيئًا له مفتاح ولا يفتح بابًا.",
-      "اذكر طريقة لتوفير المال.",
-      "ما العدد الناقص: 1، 3، 5، ؟",
-      "اذكر ثلاثة أشياء يمكن قياسها.",
-      "حل لغزًا من اختيارك خلال 20 ثانية."
-    ]
-  },
+const CATEGORIES={
 
-  funny:{
-    name:"😂 مضحكة وآمنة",
-    color:"#db2777",
-    challenges:[
-      "تكلم بصوت مذيع لمدة 15 ثانية.",
-      "قل جملة عادية وكأنك روبوت.",
-      "مثّل أنك مقدم أخبار لمدة 20 ثانية.",
-      "امشِ في مكانك بطريقة مضحكة لمدة 10 ثوانٍ.",
-      "قل اسمك وكأنك في إعلان تلفزيوني.",
-      "مثّل أنك تشرح طريقة استخدام كوب لأول مرة.",
-      "قل جملة وأنت تحاول عدم الضحك.",
-      "مثّل دور مدرس يشرح شيئًا بسيطًا جدًا.",
-      "قل 3 كلمات بصوت منخفض جدًا.",
-      "تحدث لمدة 10 ثوانٍ وكأنك مذيع رياضي.",
-      "مثّل أنك فزت بجائزة كبيرة.",
-      "قل عبارة ترحيب بثلاث طرق مختلفة.",
-      "مثّل أنك تبحث عن هاتفك وهو في يدك.",
-      "قل جملة وكأنك في فيلم أكشن.",
-      "مثّل أنك روبوت يحتاج شحنًا.",
-      "تحدث كأنك شخصية كرتونية لمدة 10 ثوانٍ.",
-      "قل كلمة واحدة بخمس نبرات مختلفة.",
-      "مثّل فرحة الفوز في لعبة.",
-      "اشكر الكرسي بطريقة رسمية.",
-      "قل جملة عادية وكأنها خبر عاجل."
-    ]
-  },
-
-  focus:{
-    name:"🎯 تركيز",
-    color:"#0891b2",
-    challenges:[
-      "اذكر الأرقام من 1 إلى 15 بدون خطأ.",
-      "اذكر أسماء 5 أشياء تراها الآن.",
-      "احفظ هذه الأرقام: 4-8-2-9 ثم قلها بالعكس.",
-      "قل أيام الأسبوع بالترتيب.",
-      "اذكر 5 كلمات تبدأ بنفس الحرف.",
-      "انظر إلى شيء أمامك واذكر 4 تفاصيل عنه.",
-      "عد تنازليًا من 20 إلى 1.",
-      "اذكر 5 أشياء لونها مختلف.",
-      "احفظ 3 كلمات ثم قلها بعد 10 ثوانٍ.",
-      "قل أشهر السنة بالترتيب.",
-      "اذكر 5 أشياء موجودة في الغرفة.",
-      "قل الأرقام الزوجية من 2 إلى 20.",
-      "اذكر 5 كلمات بدون استخدام حرف م.",
-      "قل 5 أشياء صغيرة.",
-      "اذكر 5 أشياء كبيرة.",
-      "قل 5 كلمات تبدأ بحرف س.",
-      "اذكر 5 أشياء تستخدم الكهرباء.",
-      "احفظ الرقم 739 ثم قلّه بالعكس.",
-      "قل 10 أرقام بدون توقف.",
-      "اذكر 5 أشياء تراها أمامك بالترتيب."
-    ]
-  },
-
-  words:{
-    name:"🔤 كلمات",
-    color:"#16a34a",
-    challenges:[
-      "قل كلمة تبدأ بحرف ب.",
-      "قل 5 كلمات تبدأ بحرف س.",
-      "قل كلمة من 4 أحرف.",
-      "قل كلمة تنتهي بحرف م.",
-      "قل 3 كلمات فيها حرف ر.",
-      "قل 5 أسماء أطعمة.",
-      "قل 5 أسماء حيوانات.",
-      "قل 5 أسماء دول.",
-      "قل 5 كلمات إنجليزية تعرفها.",
-      "قل كلمة عكس كلمة كبير.",
-      "قل كلمة عكس كلمة سريع.",
-      "قل 3 كلمات متشابهة في المعنى.",
-      "قل 3 كلمات متضادة.",
-      "قل كلمة تبدأ وتنتهي بنفس الحرف.",
-      "قل 5 كلمات مرتبطة بالمدرسة.",
-      "قل 5 كلمات مرتبطة بالسفر.",
-      "قل 5 كلمات مرتبطة بالرياضة.",
-      "قل 5 كلمات مرتبطة بالبحر.",
-      "قل 5 كلمات مرتبطة بالتقنية.",
-      "قل 5 كلمات مرتبطة بالبيت."
-    ]
-  },
-
-  group:{
-    name:"👥 جماعية",
-    color:"#ea580c",
-    challenges:[
-      "اختر لاعبًا وقل له شيئًا إيجابيًا.",
-      "اختر لاعبًا واطلب منه اختيار كلمة لك.",
-      "اتفق مع لاعب على لون عشوائي.",
-      "اختر لاعبًا وقل له: دورك قريب.",
-      "اجعل لاعبًا يختار لك رقمًا من 1 إلى 10.",
-      "اختر لاعبًا واسأله عن هواية يحبها.",
-      "اجعل الجميع يصفقون مرة واحدة.",
-      "اطلب من الجميع قول كلمة في نفس الوقت.",
-      "اختر لاعبًا وشاركه تحديًا بسيطًا.",
-      "اجعل الجميع يقولون أسماءهم بسرعة.",
-      "اختر لاعبًا ليختار القسم القادم.",
-      "اطلب من لاعب أن يختار لك حرفًا.",
-      "اجعل الجميع يرفعون أيديهم ثم يخفضونها.",
-      "اختر لاعبًا واسأله عن أكلة يحبها.",
-      "اجعل لاعبين يتنافسان في سؤال معلومات عامة.",
-      "اطلب من الجميع قول رقم من 1 إلى 5.",
-      "اختر لاعبًا ليكون مساعدك.",
-      "اطلب من لاعب اختيار تحديك القادم.",
-      "اجعل الجميع يصفقون للفائز.",
-      "اختر لاعبًا وقل له: مستعد؟"
-    ]
-  },
-
-  social:{
-    name:"💬 اجتماعية",
-    color:"#9333ea",
-    challenges:[
-      "اذكر شيئًا تحبه في هوايتك المفضلة.",
-      "قل موقفًا مضحكًا حصل معك بدون ذكر أسماء.",
-      "اذكر مكانًا تتمنى زيارته.",
-      "قل أكلة تحبها.",
-      "اذكر لعبة تستمتع بها.",
-      "قل مهارة تتمنى تعلمها.",
-      "اذكر فيلمًا أو مسلسلًا أعجبك.",
-      "قل شيئًا تعلمته مؤخرًا.",
-      "اذكر بلدًا تريد زيارته.",
-      "قل هدفًا صغيرًا تريد تحقيقه.",
-      "اذكر رياضة تحبها.",
-      "قل شيئًا يجعلك تضحك.",
-      "اذكر تطبيقًا تستخدمه كثيرًا.",
-      "قل هواية ترغب بتجربتها.",
-      "اذكر شيئًا جيدًا حدث لك اليوم.",
-      "قل نصيحة بسيطة تفيد الآخرين.",
-      "اذكر شيئًا تحبه في الأصدقاء.",
-      "قل شيئًا جديدًا تريد تجربته.",
-      "اذكر أكلة تريد تعلم طبخها.",
-      "قل شيئًا تتمنى أن تتعلمه."
-    ]
-  },
-
-  surprise:{
-    name:"🎁 مفاجآت",
-    color:"#ca8a04",
-    challenges:[
-      "اختر لاعبًا ليختار رقمًا من 1 إلى 5.",
-      "خذ تحديًا عشوائيًا من قسم آخر.",
-      "اجعل اللاعب الذي بعدك يختار لك القسم.",
-      "قل أول كلمة تخطر في بالك.",
-      "اختر لاعبًا ليطرح عليك سؤالًا بسيطًا.",
-      "بدّل دورك مع لاعب لمدة جولة.",
-      "اختر رقمًا من 1 إلى 10 ثم حاول تخمينه.",
-      "قل شيئًا لم تكن تتوقع أن يظهر في اللعبة.",
-      "اختر تحديًا من قسم الكلمات.",
-      "اختر تحديًا من قسم الذكاء.",
-      "اختر تحديًا من قسم التركيز.",
-      "اختر لاعبًا ليضغط زر التالي.",
-      "قل لونًا ثم ابحث عن شيء بهذا اللون.",
-      "اختر تحديًا سريعًا.",
-      "اجعل اللاعب التالي يختار القسم.",
-      "قل رقمًا عشوائيًا بين 1 و20.",
-      "اختر لاعبًا لتحديد مدة التحدي.",
-      "قل كلمة مرتبطة بالبحر.",
-      "قل كلمة مرتبطة بالفضاء.",
-      "اختر أي تحدٍ آمن من القائمة."
-    ]
-  },
-
-  daily:{
-    name:"📅 يومية",
-    color:"#f59e0b",
-    challenges:[
-      "اذكر شيئًا جيدًا تريد إنجازه اليوم.",
-      "قل هدفًا صغيرًا تريد تحقيقه اليوم.",
-      "اذكر مهارة تريد تحسينها.",
-      "قل شيئًا إيجابيًا عن يومك.",
-      "اذكر عادة جيدة تريد المحافظة عليها.",
-      "قل شيئًا جديدًا تعلمته اليوم.",
-      "اذكر شخصًا ساعدك مؤخرًا واشكره.",
-      "حدد مهمة واحدة ستنهيها اليوم.",
-      "قل شيئًا تتطلع إليه.",
-      "اذكر شيئًا تريد تطويره في نفسك."
-    ]
-  }
-};
-
-const STORAGE_KEY="tahdak_local_v4";
-
-let state = {
-  name:"اللاعب",
-  points:0,
-  coins:0,
-  wins:0,
-  dailyDate:"",
-  dailyDone:false,
-  dailyIndex:0,
-  used:{},
-  messages:[],
-  players:[
-    {id:"me",name:"اللاعب",points:0}
+ speed:{
+  name:"⚡ سرعة",
+  color:"#7c3aed",
+  list:[
+   "اذكر 5 ألوان خلال 10 ثوانٍ.",
+   "اذكر 5 فواكه بسرعة.",
+   "اذكر 5 حيوانات خلال 10 ثوانٍ.",
+   "اذكر 5 مدن.",
+   "اذكر 5 أكلات.",
+   "اذكر 5 رياضات.",
+   "اذكر 5 دول.",
+   "اذكر 5 أسماء أولاد.",
+   "اذكر 5 أسماء بنات.",
+   "اذكر 5 أشياء حولك."
   ]
+ },
+
+ intelligence:{
+  name:"🧠 ذكاء",
+  color:"#2563eb",
+  list:[
+   "ما الشيء الذي له أسنان ولا يعض؟",
+   "ما الشيء الذي كلما أخذت منه كبر؟",
+   "ما العدد التالي: 2، 4، 6، 8؟",
+   "ما العدد التالي: 5، 10، 15، 20؟",
+   "إذا معك 10 ريالات وصرفت 4، كم بقي؟",
+   "ما الشيء الذي يمشي بلا أرجل؟",
+   "ما الشيء الذي يكتب ولا يقرأ؟",
+   "اذكر ثلاثة أشياء لا تستطيع لمسها.",
+   "رتب: ثانية، دقيقة، ساعة، يوم.",
+   "ما العدد الناقص: 1، 3، 5، ؟"
+  ]
+ },
+
+ funny:{
+  name:"😂 مضحكة",
+  color:"#db2777",
+  list:[
+   "تكلم كأنك مذيع لمدة 15 ثانية.",
+   "تحدث كأنك روبوت.",
+   "مثّل أنك مذيع أخبار.",
+   "قل اسمك وكأنك في إعلان.",
+   "مثّل أنك فزت بجائزة.",
+   "تحدث كأنك مذيع رياضي.",
+   "قل جملة بدون أن تضحك.",
+   "مثّل أنك تبحث عن هاتفك وهو في يدك.",
+   "تكلم كأنك شخصية كرتونية.",
+   "قل جملة عادية وكأنها خبر عاجل."
+  ]
+ },
+
+ focus:{
+  name:"🎯 تركيز",
+  color:"#0891b2",
+  list:[
+   "عد من 1 إلى 20 بدون خطأ.",
+   "عد من 20 إلى 1.",
+   "اذكر أيام الأسبوع بالترتيب.",
+   "اذكر أشهر السنة بالترتيب.",
+   "اذكر 5 أشياء تراها أمامك.",
+   "احفظ 4-8-2-9 ثم قلها بالعكس.",
+   "اذكر 5 كلمات تبدأ بحرف س.",
+   "اذكر 5 أشياء موجودة في الغرفة.",
+   "قل الأرقام الزوجية من 2 إلى 20.",
+   "اذكر 5 أشياء تستخدم الكهرباء."
+  ]
+ },
+
+ words:{
+  name:"🔤 كلمات",
+  color:"#16a34a",
+  list:[
+   "قل 5 كلمات تبدأ بحرف س.",
+   "قل كلمة من 4 أحرف.",
+   "قل 5 أسماء أطعمة.",
+   "قل 5 أسماء حيوانات.",
+   "قل 5 أسماء دول.",
+   "قل 3 كلمات متضادة.",
+   "قل 3 كلمات متشابهة في المعنى.",
+   "قل كلمة تبدأ وتنتهي بنفس الحرف.",
+   "قل 5 كلمات مرتبطة بالمدرسة.",
+   "قل 5 كلمات مرتبطة بالتقنية."
+  ]
+ },
+
+ group:{
+  name:"👥 جماعية",
+  color:"#ea580c",
+  list:[
+   "اختر لاعبًا وقل له شيئًا إيجابيًا.",
+   "اجعل الجميع يصفقون مرة واحدة.",
+   "اختر لاعبًا ليسألك سؤالًا بسيطًا.",
+   "اجعل الجميع يقولون رقمًا من 1 إلى 5.",
+   "اختر لاعبًا ليختار تحديك القادم.",
+   "اختر لاعبًا ليحدد القسم القادم.",
+   "اجعل الجميع يقولون أسماءهم بسرعة.",
+   "اختر لاعبًا ليكون مساعدك.",
+   "اطلب من لاعب اختيار حرف.",
+   "اجعل لاعبين يتنافسان في سؤال."
+  ]
+ },
+
+ social:{
+  name:"💬 اجتماعية",
+  color:"#9333ea",
+  list:[
+   "اذكر هواية تحبها.",
+   "اذكر مكانًا تتمنى زيارته.",
+   "اذكر لعبة تحبها.",
+   "اذكر مهارة تريد تعلمها.",
+   "اذكر رياضة تحبها.",
+   "اذكر شيئًا تعلمته مؤخرًا.",
+   "اذكر بلدًا تريد زيارته.",
+   "اذكر هدفًا تريد تحقيقه.",
+   "اذكر تطبيقًا تستخدمه كثيرًا.",
+   "اذكر شيئًا جيدًا حدث لك اليوم."
+  ]
+ },
+
+ surprise:{
+  name:"🎁 مفاجآت",
+  color:"#ca8a04",
+  list:[
+   "قل أول كلمة تخطر في بالك.",
+   "اختر لاعبًا ليسألك سؤالًا.",
+   "اختر رقمًا من 1 إلى 10.",
+   "قل لونًا وابحث عن شيء بهذا اللون.",
+   "اختر تحديًا من قسم الكلمات.",
+   "اختر تحديًا من قسم الذكاء.",
+   "اختر تحديًا من قسم التركيز.",
+   "قل كلمة مرتبطة بالبحر.",
+   "قل كلمة مرتبطة بالفضاء.",
+   "اختر لاعبًا يحدد التحدي القادم."
+  ]
+ }
+
 };
 
-function todayKey(){
-  const d=new Date();
-  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+/* ================================
+   الحالة
+   ================================ */
+
+let state={
+ players:[],
+ messages:[],
+ myPoints:0,
+ myWins:0,
+ rounds:0,
+ dailyDate:"",
+ dailyDone:false,
+ dailyIndex:0
+};
+
+let selectedCategory=null;
+let currentPlayerIndex=-1;
+let currentQuestion=null;
+let wheelRotation=0;
+let spinning=false;
+let roundQuestions=0;
+let maxQuestions=0;
+let usedQuestions={};
+
+/* ================================
+   التخزين
+   ================================ */
+
+function save(){
+
+ localStorage.setItem(
+  STORAGE,
+  JSON.stringify(state)
+ );
+
 }
 
-function loadState(){
-  try{
-    const saved=JSON.parse(localStorage.getItem(STORAGE_KEY));
-    if(saved) state={...state,...saved};
-  }catch(e){}
+function load(){
 
-  if(!state.used) state.used={};
-  if(!state.messages) state.messages=[];
-  if(!state.players || !state.players.length){
-    state.players=[{id:"me",name:state.name || "اللاعب",points:0}];
+ try{
+
+  const data=JSON.parse(
+   localStorage.getItem(STORAGE)
+  );
+
+  if(data){
+   state={...state,...data};
   }
 
-  if(state.dailyDate!==todayKey()){
-    state.dailyDate=todayKey();
-    state.dailyDone=false;
-    state.dailyIndex=calculateDailyIndex();
-    saveState();
-  }
+ }catch(e){}
 
-  state.players[0].name=state.name || "اللاعب";
-  state.players[0].points=state.points || 0;
+ if(!Array.isArray(state.players)){
+  state.players=[];
+ }
+
+ if(!Array.isArray(state.messages)){
+  state.messages=[];
+ }
+
 }
 
-function saveState(){
-  localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
-}
+load();
 
-function calculateDailyIndex(){
-  const d=new Date();
-  const seed=d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();
-  return seed % CATEGORIES.daily.challenges.length;
+/* ================================
+   أدوات
+   ================================ */
+
+function esc(v){
+
+ return String(v)
+ .replaceAll("&","&amp;")
+ .replaceAll("<","&lt;")
+ .replaceAll(">","&gt;")
+ .replaceAll('"',"&quot;")
+ .replaceAll("'","&#039;");
+
 }
 
 function toast(text){
-  const el=document.getElementById("toast");
-  el.textContent=text;
-  el.classList.add("show");
-  clearTimeout(window.toastTimer);
-  window.toastTimer=setTimeout(()=>el.classList.remove("show"),2200);
+
+ const t=document.getElementById("toast");
+
+ t.textContent=text;
+ t.classList.add("show");
+
+ clearTimeout(window.toastTimer);
+
+ window.toastTimer=setTimeout(()=>{
+  t.classList.remove("show");
+ },2200);
+
 }
+
+/* ================================
+   التنقل
+   ================================ */
 
 function showScreen(id){
-  document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
 
-  document.querySelectorAll(".nav button").forEach(x=>{
-    x.classList.toggle("active",x.dataset.screen===id);
-  });
+ document.querySelectorAll(".screen")
+ .forEach(s=>s.classList.remove("active"));
 
-  if(id==="home") updateUI();
-  if(id==="messages") renderMessages();
-  if(id==="leaderboard") renderLeaderboard();
-  if(id==="profile") updateProfile();
-}
+ document.getElementById(id).classList.add("active");
 
-function updateUI(){
-  document.getElementById("homePoints").textContent=state.points;
-  document.getElementById("homeCoins").textContent=state.coins;
-  document.getElementById("homeWins").textContent=state.wins;
+ document.querySelectorAll(".nav button")
+ .forEach(b=>{
+  b.classList.toggle(
+   "active",
+   b.dataset.screen===id
+  );
+ });
 
-  const daily=CATEGORIES.daily.challenges[state.dailyIndex];
-
-  document.getElementById("dailyText").textContent=daily;
-
-  const btn=document.getElementById("dailyBtn");
-
-  if(state.dailyDone){
-    btn.textContent="✅ تم إنجاز تحدي اليوم";
-    btn.disabled=true;
-    btn.style.opacity=".55";
-  }else{
-    btn.textContent="أنجزت تحدي اليوم";
-    btn.disabled=false;
-    btn.style.opacity="1";
-  }
-}
-
-function buildCategories(){
-  const grid=document.getElementById("categoryGrid");
-  grid.innerHTML="";
-
-  Object.keys(CATEGORIES).forEach(key=>{
-    if(key==="daily") return;
-
-    const c=CATEGORIES[key];
-
-    const btn=document.createElement("button");
-    btn.className="category";
-    btn.innerHTML=
-      "<strong>"+c.name+"</strong>"+
-      "<span>"+c.challenges.length+" تحديًا</span>";
-
-    btn.onclick=()=>{
-      selectCategory(key);
-      showScreen("categories");
-    };
-
-    grid.appendChild(btn);
-  });
-}
-
-function selectCategory(key){
-  selectedCategory=key;
-
-  const c=CATEGORIES[key];
-
-  document.querySelectorAll(".category").forEach(x=>x.classList.remove("active"));
-
-  const cards=[...document.querySelectorAll(".category")];
-  const index=Object.keys(CATEGORIES).filter(x=>x!=="daily").indexOf(key);
-  if(cards[index]) cards[index].classList.add("active");
-
-  const challenge=getUnusedChallenge(key);
-
-  document.getElementById("categoryChallenge").innerHTML=
-    '<span class="badge">'+c.name+'</span>'+
-    '<h2>'+challenge.text+'</h2>'+
-    '<button class="btn" onclick="useCategoryChallenge(\''+key+'\','+challenge.index+')">استخدم هذا التحدي</button>';
-}
-
-function useCategoryChallenge(key,index){
-  activeChallenge={
-    category:key,
-    index:index,
-    text:CATEGORIES[key].challenges[index]
-  };
-
-  document.getElementById("activeChallenge").textContent=activeChallenge.text;
-  document.getElementById("selectedCategoryName").textContent=CATEGORIES[key].name;
-  document.getElementById("selectedCategoryCard").classList.remove("hidden");
-
-  markUsed(key,index);
-
-  showScreen("game");
-
-  toast("تم اختيار التحدي فعليًا 🎯");
-}
-
-function getUnusedChallenge(key){
-  const list=CATEGORIES[key].challenges;
-
-  if(!state.used[key]) state.used[key]=[];
-
-  let available=[];
-
-  for(let i=0;i<list.length;i++){
-    if(!state.used[key].includes(i)) available.push(i);
-  }
-
-  /*
-    إذا خلصت كل تحديات القسم:
-    نبدأ دورة جديدة للقسم فقط.
-    هذا يمنع التكرار حتى تنتهي القائمة كاملة.
-  */
-  if(available.length===0){
-    state.used[key]=[];
-    available=list.map((_,i)=>i);
-  }
-
-  const index=available[Math.floor(Math.random()*available.length)];
-
-  saveState();
-
-  return {
-    index,
-    text:list[index]
-  };
-}
-
-function markUsed(key,index){
-  if(!state.used[key]) state.used[key]=[];
-
-  if(!state.used[key].includes(index)){
-    state.used[key].push(index);
-  }
-
-  saveState();
-}
-
-let selectedCategory="speed";
-let activeChallenge=null;
-let spinning=false;
-let rotation=0;
-let timerInterval=null;
-let timeLeft=30;
-
-function buildWheel(){
-  const wheel=document.getElementById("wheel");
-
-  wheel.querySelectorAll(".wheel-sector").forEach(x=>x.remove());
-
-  const keys=Object.keys(CATEGORIES).filter(k=>k!=="daily");
-
-  const colors=keys.map(k=>CATEGORIES[k].color);
-
-  const step=360/keys.length;
-
-  keys.forEach((key,i)=>{
-    const sector=document.createElement("div");
-
-    sector.className="wheel-sector";
-
-    sector.style.transform=
-      "rotate("+(i*step)+"deg) skewY("+(-(90-step))+"deg)";
-
-    sector.style.background=CATEGORIES[key].color;
-
-    sector.innerHTML=
-      "<span style='transform:skewY("+ (90-step) +"deg) rotate("+ (step/2) +"deg)'>"+
-      CATEGORIES[key].name.replace(/^./,"")+
-      "</span>";
-
-    wheel.appendChild(sector);
-  });
-}
-
-function spinWheel(){
-
-  if(spinning) return;
-
-  spinning=true;
-
-  const btn=document.getElementById("spinBtn");
-  btn.disabled=true;
-  btn.style.opacity=".5";
-
-  const keys=Object.keys(CATEGORIES).filter(k=>k!=="daily");
-
-  /*
-    نختار الفائز أولًا ثم نحسب دوران العجلة.
-    لذلك القسم الذي يظهر تحت المؤشر هو نفسه القسم الذي سيتم اختياره.
-  */
-
-  const winnerIndex=Math.floor(Math.random()*keys.length);
-  const winnerKey=keys[winnerIndex];
-
-  const step=360/keys.length;
-
-  /*
-    مركز القطاع:
-    نريد مركز القطاع الفائز عند أعلى العجلة.
-  */
-  const targetCenter=winnerIndex*step + step/2;
-
-  const desired=(-targetCenter+360)%360;
-
-  const current=rotation%360;
-
-  let delta=desired-current;
-
-  if(delta<0) delta+=360;
-
-  const extra=360*5;
-
-  rotation=rotation+extra+delta;
-
-  document.getElementById("wheel").style.transform=
-    "rotate("+rotation+"deg)";
-
-  document.getElementById("wheelStatus").textContent="العجلة تدور... 🎡";
-
-  setTimeout(()=>{
-
-    spinning=false;
-
-    btn.disabled=false;
-    btn.style.opacity="1";
-
-    /*
-      هنا نستخدم winnerKey نفسه الذي تم حسابه للدوران.
-      وبالتالي لا يمكن أن تظهر العجلة قسمًا وتختار قسمًا آخر.
-    */
-    selectWheelCategory(winnerKey);
-
-  },4100);
-}
-
-function selectWheelCategory(key){
-
-  selectedCategory=key;
-
-  const challenge=getUnusedChallenge(key);
-
-  activeChallenge={
-    category:key,
-    index:challenge.index,
-    text:challenge.text
-  };
-
-  markUsed(key,challenge.index);
-
-  document.getElementById("selectedCategoryName").textContent=
-    CATEGORIES[key].name;
-
-  document.getElementById("activeChallenge").textContent=
-    challenge.text;
-
-  document.getElementById("selectedCategoryCard").classList.remove("hidden");
-
-  document.getElementById("wheelStatus").innerHTML=
-    "اختارت العجلة: <b style='color:var(--cyan)'>"+
-    CATEGORIES[key].name+
-    "</b>";
-
-  resetChallengeControls();
-
-  toast("تم اختيار "+CATEGORIES[key].name+" 🎯");
-}
-
-function resetChallengeControls(){
-
-  clearInterval(timerInterval);
-
-  document.getElementById("timer").classList.add("hidden");
-  document.getElementById("timer").textContent="30";
-
-  document.getElementById("startChallengeBtn").classList.remove("hidden");
-  document.getElementById("completeChallengeBtn").classList.add("hidden");
-  document.getElementById("nextChallengeBtn").classList.add("hidden");
-}
-
-function startChallenge(){
-
-  if(!activeChallenge){
-    selectWheelCategory(selectedCategory);
-    return;
-  }
-
-  timeLeft=30;
-
-  const timer=document.getElementById("timer");
-
-  timer.classList.remove("hidden");
-  timer.textContent=timeLeft;
-
-  document.getElementById("startChallengeBtn").classList.add("hidden");
-  document.getElementById("completeChallengeBtn").classList.remove("hidden");
-
-  clearInterval(timerInterval);
-
-  timerInterval=setInterval(()=>{
-
-    timeLeft--;
-
-    timer.textContent=timeLeft;
-
-    if(timeLeft<=0){
-
-      clearInterval(timerInterval);
-
-      document.getElementById("completeChallengeBtn").classList.add("hidden");
-      document.getElementById("nextChallengeBtn").classList.remove("hidden");
-
-      toast("انتهى الوقت ⏰");
-    }
-
-  },1000);
-}
-
-function completeChallenge(){
-
-  clearInterval(timerInterval);
-
-  state.points+=100;
-  state.coins+=10;
-  state.wins++;
-
-  state.players[0].points=state.points;
-
-  saveState();
-
-  document.getElementById("timer").classList.add("hidden");
-  document.getElementById("completeChallengeBtn").classList.add("hidden");
-  document.getElementById("nextChallengeBtn").classList.remove("hidden");
-
-  updateUI();
-  renderLeaderboard();
-
-  toast("أحسنت! +100 نقطة و +10 عملات 🏆");
-}
-
-function nextChallenge(){
-
-  const challenge=getUnusedChallenge(selectedCategory);
-
-  activeChallenge={
-    category:selectedCategory,
-    index:challenge.index,
-    text:challenge.text
-  };
-
-  markUsed(selectedCategory,challenge.index);
-
-  document.getElementById("activeChallenge").textContent=challenge.text;
-
-  resetChallengeControls();
-
-  toast("تحدي جديد بدون تكرار 🔄");
-}
-
-function completeDaily(){
-
-  if(state.dailyDone){
-    toast("أنجزت تحدي اليوم بالفعل ✅");
-    return;
-  }
-
-  state.dailyDone=true;
-  state.points+=100;
-  state.coins+=10;
-  state.wins++;
-
-  state.players[0].points=state.points;
-
-  saveState();
-
-  updateUI();
-  renderLeaderboard();
-
-  toast("تم إنجاز تحدي اليوم! +100 نقطة 🎉");
-}
-
-function addLocalPlayer(){
-
-  const name=prompt("اكتب اسم اللاعب:");
-
-  if(!name || !name.trim()) return;
-
-  const clean=name.trim();
-
-  if(state.players.some(p=>p.name.toLowerCase()===clean.toLowerCase())){
-    toast("هذا اللاعب موجود بالفعل");
-    return;
-  }
-
-  state.players.push({
-    id:"p_"+Date.now(),
-    name:clean,
-    points:0
-  });
-
-  saveState();
+ if(id==="home")updateHome();
+ if(id==="game"){
   renderPlayers();
+  buildWheel();
+ }
+ if(id==="messages")renderMessages();
+ if(id==="leaderboard")renderLeaderboard();
 
-  toast("تمت إضافة "+clean);
+ window.scrollTo(0,0);
+
+}
+
+/* ================================
+   اللاعبين
+   ================================ */
+
+function addPlayer(){
+
+ if(roundQuestions>0){
+  toast("الجولة بدأت، لا تضف لاعبًا الآن");
+  return;
+ }
+
+ const input=document.getElementById("playerInput");
+ const name=input.value.trim();
+
+ if(!name){
+  toast("اكتب اسم اللاعب");
+  return;
+ }
+
+ const exists=state.players.some(
+  p=>p.name.toLowerCase()===name.toLowerCase()
+ );
+
+ if(exists){
+  toast("اسم اللاعب موجود بالفعل");
+  return;
+ }
+
+ state.players.push({
+  id:Date.now()+"_"+Math.random(),
+  name:name,
+  points:0,
+  correct:0,
+  wrong:0
+ });
+
+ input.value="";
+
+ save();
+ renderPlayers();
+ buildWheel();
+
+ toast("تمت إضافة "+name+" 👤");
+
+}
+
+function removePlayer(id){
+
+ if(roundQuestions>0){
+  toast("لا يمكن الحذف أثناء الجولة");
+  return;
+ }
+
+ state.players=state.players.filter(
+  p=>p.id!==id
+ );
+
+ save();
+ renderPlayers();
+ buildWheel();
+
 }
 
 function renderPlayers(){
 
-  const box=document.getElementById("players");
+ const box=document.getElementById("playersList");
 
-  box.innerHTML="";
+ box.innerHTML="";
 
-  state.players.forEach((p,i)=>{
+ if(!state.players.length){
 
-    const div=document.createElement("div");
+  box.innerHTML=
+   '<div class="empty">لم تتم إضافة أي لاعب.</div>';
 
-    div.className="player";
+  return;
 
-    div.innerHTML=
-      '<div class="avatar">'+
-      escapeHtml(p.name.charAt(0).toUpperCase())+
-      '</div>'+
-      '<div style="flex:1">'+
-      '<b>'+escapeHtml(p.name)+'</b>'+
-      '<div style="font-size:11px;color:#777">'+
-      (i===0?"أنت":"لاعب محلي")+
-      '</div>'+
-      '</div>'+
-      '<span class="points">'+p.points+' نقطة</span>';
+ }
 
-    box.appendChild(div);
-  });
+ state.players.forEach((p,i)=>{
+
+  const div=document.createElement("div");
+
+  div.className="player";
+
+  div.innerHTML=
+   '<div class="avatar">'+
+   esc(p.name.charAt(0))+
+   '</div>'+
+   '<div class="player-info">'+
+   '<b>'+esc(p.name)+'</b>'+
+   '<small>لاعب '+(i+1)+'</small>'+
+   '</div>'+
+   '<span class="points">'+p.points+' نقطة</span>'+
+   (roundQuestions===0?
+    '<button onclick="removePlayer(\''+
+    p.id+
+    '\')" style="background:#35151c;color:#f87171;padding:7px;border-radius:9px">حذف</button>':
+    ''
+   );
+
+  box.appendChild(div);
+
+ });
+
 }
+
+/* ================================
+   بدء الجولة
+   ================================ */
+
+function startGame(){
+
+ if(state.players.length<2){
+  toast("لازم تضيف لاعبين اثنين على الأقل");
+  return;
+ }
+
+ roundQuestions=0;
+ maxQuestions=state.players.length*3;
+
+ currentPlayerIndex=-1;
+ currentQuestion=null;
+ usedQuestions={};
+ spinning=false;
+
+ state.players.forEach(p=>{
+  p.points=0;
+  p.correct=0;
+  p.wrong=0;
+ });
+
+ document.getElementById("startBtn")
+ .classList.add("hidden");
+
+ document.getElementById("wheelSection")
+ .classList.remove("hidden");
+
+ document.getElementById("challengeSection")
+ .classList.add("hidden");
+
+ document.getElementById("resultSection")
+ .classList.add("hidden");
+
+ buildWheel();
+ renderPlayers();
+ save();
+
+ toast("بدأت الجولة 🎮");
+
+}
+
+/* ================================
+   بناء عجلة الأسماء
+   ================================ */
+
+function buildWheel(){
+
+ const wheel=document.getElementById("wheel");
+
+ wheel.querySelectorAll(".sector")
+ .forEach(s=>s.remove());
+
+ const players=state.players;
+
+ if(!players.length)return;
+
+ const step=360/players.length;
+
+ players.forEach((player,index)=>{
+
+  const sector=document.createElement("div");
+
+  sector.className="sector";
+
+  sector.style.transform=
+   "rotate("+
+   (index*step)+
+   "deg) skewY("+
+   (-(90-step))+
+   "deg)";
+
+  sector.style.background=
+   index%2===0?
+   "#7c3aed":
+   "#0891b2";
+
+  const span=document.createElement("span");
+
+  span.textContent=player.name;
+
+  span.style.transform=
+   "skewY("+
+   (90-step)+
+   "deg) rotate("+
+   (step/2)+
+   "deg)";
+
+  sector.appendChild(span);
+  wheel.appendChild(sector);
+
+ });
+
+}
+
+/* ================================
+   اختيار سؤال بدون تكرار
+   ================================ */
+
+function getUnusedQuestion(){
+
+ const keys=Object.keys(CATEGORIES);
+
+ let available=[];
+
+ keys.forEach(key=>{
+
+  if(!usedQuestions[key]){
+   usedQuestions[key]=[];
+  }
+
+  CATEGORIES[key].list.forEach((text,index)=>{
+
+   if(!usedQuestions[key].includes(index)){
+
+    available.push({
+     category:key,
+     index:index,
+     text:text
+    });
+
+   }
+
+  });
+
+ });
+
+ if(!available.length){
+
+  usedQuestions={};
+
+  return getUnusedQuestion();
+
+ }
+
+ const q=
+  available[
+   Math.floor(Math.random()*available.length)
+  ];
+
+ usedQuestions[q.category].push(q.index);
+
+ return q;
+
+}
+
+/* ================================
+   عجلة اللاعبين
+   ================================ */
+
+function spinWheel(){
+
+ if(spinning)return;
+
+ if(roundQuestions>=maxQuestions){
+
+  finishGame();
+  return;
+
+ }
+
+ if(!state.players.length)return;
+
+ spinning=true;
+
+ const button=document.getElementById("spinBtn");
+
+ button.disabled=true;
+
+ const winnerIndex=
+  Math.floor(Math.random()*state.players.length);
+
+ const winner=state.players[winnerIndex];
+
+ const step=360/state.players.length;
+
+ /*
+  كل قطاع له مركز واضح.
+  نحسب نفس اللاعب الذي سيصل مركزه للسهم.
+ */
+
+ const sectorCenter=
+  winnerIndex*step+
+  step/2;
+
+ const target=
+  (360-sectorCenter)%360;
+
+ const current=
+  wheelRotation%360;
+
+ let delta=target-current;
+
+ if(delta<0)delta+=360;
+
+ wheelRotation+=
+  (360*5)+delta;
+
+ document.getElementById("wheel").style.transform=
+  "rotate("+wheelRotation+"deg)";
+
+ document.getElementById("wheelText").textContent=
+  "العجلة تدور... 🎡";
+
+ setTimeout(()=>{
+
+  spinning=false;
+
+  button.disabled=false;
+
+  /*
+    نستخدم winnerIndex نفسه الذي استُخدم
+    لحساب اتجاه العجلة، لذلك السهم والاختيار
+    لا يمكن أن يختلفا.
+  */
+
+  currentPlayerIndex=winnerIndex;
+
+  chooseQuestionForPlayer();
+
+ },4100);
+
+}
+
+/* ================================
+   إعطاء السؤال للاعب الذي اختارته العجلة
+   ================================ */
+
+function chooseQuestionForPlayer(){
+
+ const player=
+  state.players[currentPlayerIndex];
+
+ if(!player)return;
+
+ currentQuestion=getUnusedQuestion();
+
+ document.getElementById("wheelText").innerHTML=
+  "🎯 السهم اختار: <b style='color:var(--cyan)'>"+
+  esc(player.name)+
+  "</b>";
+
+ document.getElementById("challengeSection")
+ .classList.remove("hidden");
+
+ document.getElementById("currentPlayer")
+ .textContent=player.name;
+
+ document.getElementById("questionCounter")
+ .textContent=
+  "السؤال "+(roundQuestions+1)+" من "+maxQuestions;
+
+ document.getElementById("questionCategory")
+ .textContent=
+  CATEGORIES[currentQuestion.category].name;
+
+ document.getElementById("questionText")
+ .textContent=
+  currentQuestion.text;
+
+ document.getElementById("answerStatus")
+ .textContent="";
+
+ document.getElementById("correctBtn").disabled=false;
+ document.getElementById("wrongBtn").disabled=false;
+
+ document.getElementById("challengeSection")
+ .scrollIntoView({
+  behavior:"smooth",
+  block:"start"
+ });
+
+ save();
+
+}
+
+/* ================================
+   الإجابة
+   ================================ */
+
+function answer(correct){
+
+ if(currentPlayerIndex<0)return;
+
+ const player=
+  state.players[currentPlayerIndex];
+
+ if(correct){
+
+  player.correct++;
+  player.points+=100;
+
+  document.getElementById("answerStatus").innerHTML=
+   '<span class="correct">✅ إجابة صحيحة +100</span>';
+
+ }else{
+
+  player.wrong++;
+
+  document.getElementById("answerStatus").innerHTML=
+   '<span class="wrong">❌ إجابة خاطئة +0</span>';
+
+ }
+
+ document.getElementById("correctBtn").disabled=true;
+ document.getElementById("wrongBtn").disabled=true;
+
+ roundQuestions++;
+
+ save();
+
+ setTimeout(()=>{
+
+  document.getElementById("challengeSection")
+  .classList.add("hidden");
+
+  if(roundQuestions>=maxQuestions){
+
+   finishGame();
+
+  }else{
+
+   document.getElementById("wheelText").textContent=
+    "جاهز لاختيار اللاعب التالي 🎡";
+
+   document.getElementById("spinBtn").disabled=false;
+
+  }
+
+ },1100);
+
+}
+
+/* ================================
+   نهاية اللعبة
+   ================================ */
+
+function finishGame(){
+
+ spinning=false;
+
+ document.getElementById("wheelSection")
+ .classList.add("hidden");
+
+ document.getElementById("challengeSection")
+ .classList.add("hidden");
+
+ document.getElementById("resultSection")
+ .classList.remove("hidden");
+
+ const ranking=
+  [...state.players]
+  .sort((a,b)=>b.points-a.points);
+
+ const winner=ranking[0];
+
+ document.getElementById("winner")
+ .textContent=winner.name;
+
+ document.getElementById("winnerPoints")
+ .textContent=
+  winner.points+" نقطة";
+
+ const box=document.getElementById("ranking");
+
+ box.innerHTML=
+  '<div class="section-title">📊 الترتيب النهائي</div>';
+
+ ranking.forEach((p,i)=>{
+
+  const div=document.createElement("div");
+
+  div.className="ranking-item";
+
+  const medal=
+   i===0?"🥇":
+   i===1?"🥈":
+   i===2?"🥉":
+   "#"+(i+1);
+
+  div.innerHTML=
+   '<div style="font-size:24px">'+medal+'</div>'+
+   '<div class="name">'+
+   '<b>'+esc(p.name)+'</b>'+
+   '<small style="display:block;color:#777">'+
+   'صح '+p.correct+' · خطأ '+p.wrong+
+   '</small>'+
+   '</div>'+
+   '<strong>'+p.points+'</strong>';
+
+  box.appendChild(div);
+
+ });
+
+ /*
+  إحصاءات الجهاز العامة
+ */
+
+ state.rounds++;
+
+ const me=state.players[0];
+
+ if(me){
+  state.myPoints+=me.points;
+
+  if(me.points===winner.points){
+   state.myWins++;
+  }
+ }
+
+ save();
+
+ updateHome();
+ renderLeaderboard();
+
+ toast("🏆 الفائز: "+winner.name);
+
+ window.scrollTo({
+  top:0,
+  behavior:"smooth"
+ });
+
+}
+
+/* ================================
+   جولة جديدة
+   ================================ */
+
+function newRound(){
+
+ roundQuestions=0;
+ maxQuestions=0;
+ currentPlayerIndex=-1;
+ currentQuestion=null;
+ usedQuestions={};
+ wheelRotation=0;
+
+ state.players.forEach(p=>{
+  p.points=0;
+  p.correct=0;
+  p.wrong=0;
+ });
+
+ document.getElementById("startBtn")
+ .classList.remove("hidden");
+
+ document.getElementById("wheelSection")
+ .classList.add("hidden");
+
+ document.getElementById("challengeSection")
+ .classList.add("hidden");
+
+ document.getElementById("resultSection")
+ .classList.add("hidden");
+
+ document.getElementById("wheel")
+ .style.transform="rotate(0deg)";
+
+ renderPlayers();
+ save();
+
+ toast("جولة جديدة جاهزة 🎮");
+
+}
+
+/* ================================
+   الأقسام
+   ================================ */
+
+function buildCategories(){
+
+ const grid=document.getElementById("categoryGrid");
+
+ grid.innerHTML="";
+
+ Object.keys(CATEGORIES).forEach(key=>{
+
+  const c=CATEGORIES[key];
+
+  const button=document.createElement("button");
+
+  button.className="category";
+
+  button.innerHTML=
+   "<strong>"+c.name+"</strong>"+
+   "<small>"+c.list.length+" تحديات</small>";
+
+  button.onclick=()=>selectCategory(key);
+
+  grid.appendChild(button);
+
+ });
+
+}
+
+function selectCategory(key){
+
+ selectedCategory=key;
+
+ document.querySelectorAll(".category")
+ .forEach(x=>x.classList.remove("active"));
+
+ const keys=Object.keys(CATEGORIES);
+
+ const index=keys.indexOf(key);
+
+ const buttons=document.querySelectorAll(".category");
+
+ if(buttons[index]){
+  buttons[index].classList.add("active");
+ }
+
+ const c=CATEGORIES[key];
+
+ const random=
+  c.list[
+   Math.floor(Math.random()*c.list.length)
+  ];
+
+ document.getElementById("categoryPreview").innerHTML=
+  '<span class="badge">'+c.name+'</span>'+
+  '<h2>'+esc(random)+'</h2>'+
+  '<button class="btn" onclick="showScreen(\'game\')">'+
+  'إضافة هذا القسم للجولة'+
+  '</button>';
+
+}
+
+/* ================================
+   اليومية
+   ================================ */
+
+function today(){
+
+ const d=new Date();
+
+ return d.getFullYear()+"-"+
+  (d.getMonth()+1)+"-"+
+  d.getDate();
+
+}
+
+function dailyIndex(){
+
+ const d=new Date();
+
+ return (
+  d.getFullYear()*10000+
+  (d.getMonth()+1)*100+
+  d.getDate()
+ )%10;
+
+}
+
+function updateDaily(){
+
+ if(state.dailyDate!==today()){
+
+  state.dailyDate=today();
+  state.dailyDone=false;
+  state.dailyIndex=dailyIndex();
+
+  save();
+
+ }
+
+ const daily=[
+  "اذكر هدفًا تريد تحقيقه اليوم.",
+  "اذكر شيئًا جديدًا تعلمته.",
+  "اذكر شيئًا إيجابيًا حدث لك اليوم.",
+  "اذكر مهارة تريد تطويرها.",
+  "اذكر شيئًا تتطلع إليه.",
+  "اذكر عادة جيدة تريد المحافظة عليها.",
+  "حدد مهمة ستنهيها اليوم.",
+  "اذكر هواية تريد تجربتها.",
+  "اذكر شيئًا تشعر أنك تعلمته جيدًا.",
+  "اذكر شيئًا تريد تحسينه."
+ ];
+
+ document.getElementById("dailyText")
+ .textContent=
+  daily[state.dailyIndex];
+
+ const btn=document.getElementById("dailyBtn");
+
+ btn.disabled=state.dailyDone;
+
+ btn.textContent=
+  state.dailyDone?
+  "✅ تم إنجاز تحدي اليوم":
+  "أنجزت التحدي";
+
+}
+
+function completeDaily(){
+
+ if(state.dailyDone)return;
+
+ state.dailyDone=true;
+ state.myPoints+=100;
+
+ save();
+ updateHome();
+
+ toast("🎉 +100 نقطة");
+
+}
+
+/* ================================
+   الرئيسية
+   ================================ */
+
+function updateHome(){
+
+ document.getElementById("homePoints")
+ .textContent=state.myPoints;
+
+ document.getElementById("homeWins")
+ .textContent=state.myWins;
+
+ document.getElementById("homeRounds")
+ .textContent=state.rounds;
+
+ updateDaily();
+
+}
+
+/* ================================
+   الرسائل
+   ================================ */
 
 function sendMessage(){
 
-  const input=document.getElementById("messageInput");
+ const input=document.getElementById("messageInput");
 
-  const text=input.value.trim();
+ const text=input.value.trim();
 
-  if(!text) return;
+ if(!text)return;
 
-  state.messages.push({
-    name:state.name,
-    text:text,
-    time:new Date().toLocaleTimeString("ar-SA",{
-      hour:"2-digit",
-      minute:"2-digit"
-    })
-  });
+ state.messages.push({
+  name:"لاعب محلي",
+  text:text,
+  time:new Date().toLocaleTimeString("ar-SA",{
+   hour:"2-digit",
+   minute:"2-digit"
+  })
+ });
 
-  if(state.messages.length>100){
-    state.messages=state.messages.slice(-100);
-  }
+ if(state.messages.length>100){
+  state.messages=state.messages.slice(-100);
+ }
 
-  input.value="";
+ input.value="";
 
-  saveState();
-  renderMessages();
+ save();
+ renderMessages();
+
 }
 
 function renderMessages(){
 
-  const box=document.getElementById("messageList");
+ const box=document.getElementById("messagesList");
 
-  box.innerHTML="";
+ box.innerHTML="";
 
-  if(!state.messages.length){
-    box.innerHTML='<div class="card empty">لا توجد رسائل حتى الآن.</div>';
-    return;
-  }
+ if(!state.messages.length){
 
-  state.messages.forEach(m=>{
+  box.innerHTML=
+   '<div class="card empty">لا توجد رسائل.</div>';
 
-    const div=document.createElement("div");
+  return;
 
-    div.className="message";
+ }
 
-    div.innerHTML=
-      "<b>"+escapeHtml(m.name)+"</b>"+
-      "<div>"+escapeHtml(m.text)+"</div>"+
-      "<small>"+escapeHtml(m.time||"")+"</small>";
+ state.messages.forEach(m=>{
 
-    box.appendChild(div);
-  });
+  const div=document.createElement("div");
+
+  div.className="message";
+
+  div.innerHTML=
+   "<b>"+esc(m.name)+"</b>"+
+   "<div>"+esc(m.text)+"</div>"+
+   "<small>"+esc(m.time)+"</small>";
+
+  box.appendChild(div);
+
+ });
+
 }
+
+/* ================================
+   المتصدرون
+   ================================ */
 
 function renderLeaderboard(){
 
-  const box=document.getElementById("leaderboardList");
+ const box=document.getElementById("leaderboard");
 
-  const list=[...state.players].sort((a,b)=>b.points-a.points);
+ box.innerHTML="";
 
-  box.innerHTML="";
+ if(!state.players.length){
 
-  list.forEach((p,i)=>{
+  box.innerHTML=
+   '<div class="empty">أضف لاعبين وابدأ جولة.</div>';
 
-    const div=document.createElement("div");
+  return;
 
-    div.className="player";
+ }
 
-    const medal=i===0?"🥇":i===1?"🥈":i===2?"🥉":"#"+(i+1);
+ const list=
+  [...state.players]
+  .sort((a,b)=>b.points-a.points);
 
-    div.innerHTML=
-      '<div class="avatar">'+medal+'</div>'+
-      '<div style="flex:1"><b>'+
-      escapeHtml(p.name)+
-      '</b></div>'+
-      '<span class="points">'+p.points+'</span>';
+ list.forEach((p,i)=>{
 
-    box.appendChild(div);
-  });
+  const div=document.createElement("div");
+
+  div.className="ranking-item";
+
+  div.innerHTML=
+   '<div>'+
+   (i===0?"🥇":
+    i===1?"🥈":
+    i===2?"🥉":"#"+(i+1))+
+   '</div>'+
+   '<div class="name">'+esc(p.name)+'</div>'+
+   '<strong>'+p.points+'</strong>';
+
+  box.appendChild(div);
+
+ });
+
 }
 
-function updateProfile(){
+/* ================================
+   المسح
+   ================================ */
 
-  document.getElementById("playerName").value=state.name;
-  document.getElementById("profilePoints").textContent=state.points;
-  document.getElementById("profileCoins").textContent=state.coins;
-  document.getElementById("profileWins").textContent=state.wins;
+function resetAll(){
+
+ if(!confirm(
+  "هل تريد مسح اللاعبين والرسائل والنقاط؟"
+ ))return;
+
+ localStorage.removeItem(STORAGE);
+
+ location.reload();
+
 }
 
-function saveName(){
+/* ================================
+   التشغيل
+   ================================ */
 
-  const input=document.getElementById("playerName");
-
-  const name=input.value.trim();
-
-  if(!name){
-    toast("اكتب اسمًا أولًا");
-    return;
-  }
-
-  state.name=name;
-
-  if(state.players.length){
-    state.players[0].name=name;
-    state.players[0].points=state.points;
-  }
-
-  saveState();
-
-  updateProfile();
-  renderPlayers();
-
-  toast("تم حفظ الاسم ✅");
-}
-
-function resetLocalGame(){
-
-  const ok=confirm(
-    "هل تريد حذف نقاطك وعملاتك وسجل التحديات والرسائل؟"
-  );
-
-  if(!ok) return;
-
-  localStorage.removeItem(STORAGE_KEY);
-
-  location.reload();
-}
-
-function escapeHtml(value){
-
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-}
-
-/* تشغيل التطبيق */
-
-loadState();
 buildCategories();
-buildWheel();
+updateHome();
 renderPlayers();
 renderMessages();
 renderLeaderboard();
-updateUI();
-updateProfile();
 
-/*
-  منع فقدان حالة التحدي عند الرجوع بين الصفحات.
-*/
-window.addEventListener("beforeunload",()=>{
-  saveState();
-});
 </script>
 
 </body>
