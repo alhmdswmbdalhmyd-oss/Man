@@ -2,771 +2,958 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>POLISH ENGINEER | العناية الاحترافية بالسيارات</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#080914">
+<title>تحدّاك</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+ --bg:#070811;--panel:#111426;--panel2:#181c32;--line:#292e4b;
+ --text:#fff;--muted:#9299b7;--p:#7c4dff;--p2:#b65cff;
+ --green:#22c55e;--red:#ef4444;--gold:#facc15;--blue:#38bdf8;
 }
-
-html{
-    scroll-behavior:smooth;
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Arial,Tahoma,sans-serif}
+body{min-height:100vh}
+button,input{font:inherit}
+button{border:0;cursor:pointer}
+.app{width:100%;max-width:540px;margin:auto;min-height:100vh;padding-bottom:90px}
+header{
+ height:68px;padding:12px 16px;display:flex;align-items:center;
+ justify-content:space-between;position:sticky;top:0;z-index:30;
+ background:#070811e8;backdrop-filter:blur(15px);border-bottom:1px solid #171a2d
 }
-
-body{
-    background:#08090b;
-    color:#f5f5f5;
-    overflow-x:hidden;
-}
-
-a{
-    text-decoration:none;
-    color:inherit;
-}
-
-/* LOADING */
-.loader{
-    position:fixed;
-    inset:0;
-    background:#08090b;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    z-index:9999;
-    animation:hideLoader 1s 2s forwards;
-}
-
-.loader-content{
-    text-align:center;
-}
-
-.loader-logo{
-    font-size:34px;
-    font-weight:900;
-    letter-spacing:4px;
-}
-
-.loader-line{
-    width:0;
-    height:2px;
-    background:#c9a45c;
-    margin:18px auto;
-    animation:loadLine 1.5s forwards;
-}
-
-@keyframes loadLine{
-    to{width:180px;}
-}
-
-@keyframes hideLoader{
-    to{
-        opacity:0;
-        visibility:hidden;
-    }
-}
-
-/* NAVBAR */
-nav{
-    position:fixed;
-    top:0;
-    right:0;
-    width:100%;
-    padding:22px 6%;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    z-index:1000;
-    background:linear-gradient(to bottom,rgba(0,0,0,.85),transparent);
-}
-
-.logo{
-    font-size:21px;
-    font-weight:900;
-    letter-spacing:2px;
-}
-
-.logo span{
-    color:#c9a45c;
-}
-
-.nav-links{
-    display:flex;
-    gap:30px;
-    list-style:none;
-}
-
-.nav-links a{
-    color:#ddd;
-    font-size:14px;
-    transition:.3s;
-}
-
-.nav-links a:hover{
-    color:#c9a45c;
-}
-
-.nav-btn{
-    padding:11px 20px;
-    border:1px solid #c9a45c;
-    border-radius:30px;
-    color:#c9a45c;
-}
-
-/* HERO */
+.logo{font-size:25px;font-weight:900}
+.logo span{color:#a76cff}
+.balance{display:flex;gap:7px;align-items:center;background:#15192a;border:1px solid var(--line);padding:8px 12px;border-radius:20px;color:var(--gold);font-weight:bold}
+.page{display:none;padding:16px}
+.page.active{display:block;animation:in .2s ease}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .hero{
-    min-height:100vh;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    overflow:hidden;
-    background:
-        linear-gradient(rgba(0,0,0,.48),rgba(0,0,0,.82)),
-        url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=90")
-        center/cover;
+ padding:25px 18px;border-radius:28px;text-align:center;
+ background:radial-gradient(circle at top,#3a2372,#15172b 65%,#111323);
+ border:1px solid #4b3b77;box-shadow:0 20px 50px #0008
 }
-
-.hero::after{
-    content:"";
-    position:absolute;
-    width:500px;
-    height:500px;
-    background:#c9a45c;
-    opacity:.08;
-    filter:blur(130px);
-    border-radius:50%;
+.heroIcon{font-size:58px}
+.hero h1{font-size:38px;margin:8px 0}
+.hero p{color:#b8bdd2;margin:0 0 20px}
+.primary{
+ width:100%;padding:15px;border-radius:17px;color:white;font-weight:900;
+ background:linear-gradient(135deg,var(--p),var(--p2));box-shadow:0 8px 25px #7c4dff44
 }
-
-.hero-content{
-    position:relative;
-    z-index:2;
-    max-width:850px;
-    padding:20px;
-    animation:heroIn 1.3s ease;
+.secondary{width:100%;padding:13px;border-radius:15px;background:#252a42;color:#fff;font-weight:bold}
+.title{display:flex;align-items:center;justify-content:space-between;margin:22px 2px 11px}
+.title h2{margin:0;font-size:19px}.title small{color:var(--muted)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{
+ background:linear-gradient(145deg,var(--panel2),var(--panel));
+ border:1px solid var(--line);border-radius:19px;padding:16px;min-height:115px
 }
-
-@keyframes heroIn{
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+.card:active{transform:scale(.98)}
+.card .emoji{font-size:29px;margin-bottom:10px}
+.card b{display:block}.card small{color:var(--muted);display:block;margin-top:5px;line-height:1.4}
+.list{display:flex;flex-direction:column;gap:9px}
+.item{
+ background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:14px;
+ display:flex;align-items:center;gap:12px
 }
-
-.hero-small{
-    color:#c9a45c;
-    letter-spacing:5px;
-    font-size:13px;
-    margin-bottom:20px;
+.itemIcon{width:45px;height:45px;border-radius:14px;background:#242943;display:grid;place-items:center;font-size:23px;flex:none}
+.itemMain{flex:1;min-width:0}.itemMain b{display:block}.itemMain small{color:var(--muted);line-height:1.5}
+.item button{background:#292f4b;color:white;padding:9px;border-radius:11px}
+.bottom{
+ position:fixed;bottom:0;left:50%;transform:translateX(-50%);
+ width:100%;max-width:540px;height:76px;background:#0c0f1dee;
+ backdrop-filter:blur(18px);border-top:1px solid #252a42;
+ display:flex;justify-content:space-around;z-index:80
 }
+.nav{background:none;color:#777f9d;font-size:11px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-width:65px}
+.nav span{font-size:23px}.nav.active{color:#b277ff}
+.back{background:#1b2035;color:white;border-radius:12px;padding:9px 13px}
+.topline{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.badge{background:#211a3b;color:#bd9aff;padding:7px 11px;border-radius:20px;font-size:12px}
 
-.hero h1{
-    font-size:clamp(42px,8vw,95px);
-    font-weight:900;
-    letter-spacing:5px;
-    line-height:1;
+/* GAME */
+.gamePlayers{display:flex;gap:8px;overflow-x:auto;padding:2px 1px 13px;scrollbar-width:none}
+.gplayer{min-width:76px;background:#14182b;border:1px solid var(--line);border-radius:15px;padding:8px 5px;text-align:center}
+.gplayer.selected{border-color:#b16aff;box-shadow:0 0 20px #8b5cf655}
+.avatar{width:40px;height:40px;margin:auto;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#714cff,#dc55ff);font-size:21px}
+.gplayer small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:4px}
+.wheelArea{display:flex;justify-content:center;padding:7px 0 18px}
+.wheelWrap{width:min(82vw,355px);aspect-ratio:1;position:relative}
+.pointer{
+ position:absolute;z-index:8;top:-10px;left:50%;transform:translateX(-50%);
+ width:0;height:0;border-left:16px solid transparent;border-right:16px solid transparent;
+ border-top:32px solid white;filter:drop-shadow(0 4px 5px #000)
 }
-
-.hero h1 span{
-    color:#c9a45c;
+.wheel{
+ width:100%;height:100%;border:9px solid #282d4b;border-radius:50%;
+ background:conic-gradient(
+ #7c3aed 0deg 45deg,#ec4899 45deg 90deg,#0ea5e9 90deg 135deg,
+ #22c55e 135deg 180deg,#f59e0b 180deg 225deg,#ef4444 225deg 270deg,
+ #8b5cf6 270deg 315deg,#14b8a6 315deg 360deg);
+ position:relative;overflow:hidden;transition:transform 4.5s cubic-bezier(.12,.75,.1,1);
+ box-shadow:0 20px 50px #0009
 }
-
-.hero p{
-    margin:25px auto;
-    max-width:600px;
-    color:#ccc;
-    font-size:18px;
-    line-height:1.8;
+.wheel:after{content:"";position:absolute;inset:40%;border-radius:50%;background:#fff;border:7px solid #292e4b;z-index:4}
+.wlabel{position:absolute;left:50%;top:50%;margin:-10px -40px;width:80px;text-align:center;font-size:13px;font-weight:bold;transform-origin:40px 10px}
+.spin{width:82%;display:block;margin:auto;padding:15px;border-radius:18px;background:linear-gradient(135deg,#8b5cf6,#ec4899);color:white;font-weight:900;font-size:18px}
+.spin:disabled{opacity:.45}
+.task{
+ display:none;margin-top:15px;padding:19px;border-radius:21px;
+ background:linear-gradient(145deg,#211a3e,#121528);border:1px solid #4a3774
 }
+.task.show{display:block;animation:in .2s}
+.task h2{margin:0 0 10px}.taskText{font-size:20px;line-height:1.75}
+.timerBox{display:none;margin-top:10px;text-align:center;background:#14182b;border:1px solid var(--line);padding:13px;border-radius:17px}
+.timer{font-size:38px;font-weight:900;color:#b68aff}
+.complete{width:100%;margin-top:13px;padding:14px;border-radius:15px;background:var(--green);color:#fff;font-weight:bold}
+.gameInfo{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
+.stat{background:#14182a;border:1px solid var(--line);padding:12px;border-radius:15px;text-align:center}
+.stat small{display:block;color:var(--muted);margin-bottom:4px}
 
-.buttons{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
+/* MODAL */
+.modal{display:none;position:fixed;inset:0;background:#000b;z-index:200;align-items:flex-end}
+.modal.show{display:flex}
+.modalBox{width:100%;max-width:540px;margin:auto;background:#111527;border:1px solid #303653;border-radius:26px 26px 0 0;padding:21px;max-height:90vh;overflow:auto;animation:up .2s}
+@keyframes up{from{transform:translateY(100%)}to{transform:none}}
+.input{width:100%;background:#090c18;color:white;border:1px solid #303650;outline:0;padding:14px;border-radius:14px;margin-bottom:10px}
+.input:focus{border-color:#8b5cf6}
+.actions{display:flex;gap:9px}.actions>*{flex:1}
+.code{font-size:38px;letter-spacing:9px;text-align:center;color:#bd98ff;font-weight:900;padding:12px}
+.roomUser{display:flex;align-items:center;justify-content:space-between;background:#181c30;border-radius:14px;padding:11px;margin-bottom:7px}
+.close{background:#272c44;color:white;padding:12px;border-radius:13px}
+.confirm{background:#7c4dff;color:white;padding:12px;border-radius:13px;font-weight:bold}
+
+/* messages */
+.chat{display:flex;flex-direction:column;gap:8px;min-height:380px}
+.msg{max-width:82%;padding:11px 14px;border-radius:17px;background:#191d31;border:1px solid var(--line);line-height:1.5}
+.msg.me{align-self:flex-start;background:#5f35b7;border-color:#7951ca}
+.msg.them{align-self:flex-end}
+.chatInput{display:flex;gap:7px;margin-top:10px}
+.chatInput input{flex:1;margin:0}.chatInput button{width:52px;border-radius:14px;background:#7c4dff;color:white}
+
+/* profile */
+.profile{background:linear-gradient(145deg,#211a3d,#14172a);padding:20px;border-radius:23px;border:1px solid #3a3159;text-align:center}
+.bigAvatar{width:75px;height:75px;border-radius:50%;margin:auto;display:grid;place-items:center;background:linear-gradient(135deg,#7c4dff,#ec4899);font-size:38px}
+.profile h2{margin:10px 0 3px}.profile small{color:var(--muted)}
+.profileStats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:17px}
+.pstat{background:#111425;padding:10px;border-radius:13px}.pstat b{display:block;font-size:18px}.pstat small{font-size:11px}
+
+/* toast */
+.toast{
+ position:fixed;top:18px;left:50%;transform:translate(-50%,-150%);
+ background:#252a40;border:1px solid #414963;color:#fff;padding:12px 17px;border-radius:15px;
+ z-index:300;transition:.25s;max-width:90%;text-align:center
 }
-
-.btn{
-    padding:15px 30px;
-    border-radius:40px;
-    transition:.3s;
-    font-weight:bold;
-}
-
-.btn-gold{
-    background:#c9a45c;
-    color:#08090b;
-}
-
-.btn-gold:hover{
-    transform:translateY(-4px);
-    box-shadow:0 12px 35px rgba(201,164,92,.25);
-}
-
-.btn-outline{
-    border:1px solid #777;
-}
-
-.btn-outline:hover{
-    border-color:#c9a45c;
-    color:#c9a45c;
-}
-
-.scroll{
-    position:absolute;
-    bottom:25px;
-    font-size:12px;
-    color:#aaa;
-}
-
-/* GENERAL */
-section{
-    padding:100px 7%;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:55px;
-}
-
-.section-title span{
-    color:#c9a45c;
-    font-size:13px;
-    letter-spacing:3px;
-}
-
-.section-title h2{
-    font-size:clamp(30px,5vw,52px);
-    margin-top:12px;
-}
-
-/* ABOUT */
-.about{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:60px;
-    align-items:center;
-}
-
-.about-img{
-    min-height:450px;
-    border-radius:25px;
-    background:
-        linear-gradient(135deg,rgba(201,164,92,.1),transparent),
-        url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80")
-        center/cover;
-}
-
-.about-text h2{
-    font-size:42px;
-    margin-bottom:20px;
-}
-
-.about-text p{
-    color:#aaa;
-    line-height:2;
-}
-
-.stats{
-    display:flex;
-    gap:35px;
-    margin-top:35px;
-}
-
-.stat strong{
-    display:block;
-    color:#c9a45c;
-    font-size:30px;
-}
-
-.stat span{
-    color:#888;
-    font-size:13px;
-}
-
-/* SERVICES */
-.services{
-    background:#0c0d10;
-}
-
-.service-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-
-.service{
-    padding:35px;
-    background:linear-gradient(145deg,#151619,#0b0c0e);
-    border:1px solid #202126;
-    border-radius:22px;
-    transition:.4s;
-}
-
-.service:hover{
-    transform:translateY(-10px);
-    border-color:#c9a45c;
-}
-
-.service-number{
-    color:#c9a45c;
-    font-size:14px;
-}
-
-.service h3{
-    margin:25px 0 12px;
-    font-size:23px;
-}
-
-.service p{
-    color:#888;
-    line-height:1.8;
-}
-
-/* BEFORE AFTER */
-.before-after{
-    position:relative;
-    max-width:1000px;
-    height:500px;
-    margin:auto;
-    overflow:hidden;
-    border-radius:25px;
-}
-
-.before-after img{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.after{
-    clip-path:inset(0 0 0 50%);
-}
-
-.slider{
-    position:absolute;
-    top:0;
-    left:50%;
-    width:3px;
-    height:100%;
-    background:#fff;
-    cursor:ew-resize;
-    z-index:5;
-}
-
-.slider::after{
-    content:"↔";
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    width:45px;
-    height:45px;
-    background:#c9a45c;
-    color:#08090b;
-    border-radius:50%;
-    display:grid;
-    place-items:center;
-    font-weight:bold;
-}
-
-/* WORK */
-.work{
-    background:#0c0d10;
-}
-
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-}
-
-.gallery img{
-    width:100%;
-    height:280px;
-    object-fit:cover;
-    border-radius:18px;
-    transition:.4s;
-}
-
-.gallery img:hover{
-    transform:scale(1.03);
-}
-
-/* CONTACT */
-.contact-box{
-    max-width:900px;
-    margin:auto;
-    padding:60px;
-    text-align:center;
-    border:1px solid #25262a;
-    border-radius:30px;
-    background:linear-gradient(145deg,#121316,#090a0c);
-}
-
-.contact-box h2{
-    font-size:40px;
-    margin-bottom:20px;
-}
-
-.contact-box p{
-    color:#999;
-    margin-bottom:30px;
-    line-height:1.8;
-}
-
-/* FOOTER */
-footer{
-    padding:35px 7%;
-    border-top:1px solid #202126;
-    display:flex;
-    justify-content:space-between;
-    color:#777;
-}
-
-/* MOBILE */
-@media(max-width:800px){
-
-    nav{
-        padding:18px 5%;
-    }
-
-    .nav-links{
-        display:none;
-    }
-
-    .hero h1{
-        font-size:48px;
-    }
-
-    .hero p{
-        font-size:15px;
-    }
-
-    section{
-        padding:75px 5%;
-    }
-
-    .about{
-        grid-template-columns:1fr;
-        gap:30px;
-    }
-
-    .about-img{
-        min-height:300px;
-    }
-
-    .about-text h2{
-        font-size:32px;
-    }
-
-    .service-grid{
-        grid-template-columns:1fr;
-    }
-
-    .gallery{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .gallery img{
-        height:190px;
-    }
-
-    .before-after{
-        height:330px;
-    }
-
-    .contact-box{
-        padding:35px 20px;
-    }
-
-    .contact-box h2{
-        font-size:30px;
-    }
-
-    footer{
-        flex-direction:column;
-        gap:12px;
-        text-align:center;
-    }
-}
+.toast.show{transform:translate(-50%,0)}
+.empty{text-align:center;color:var(--muted);padding:35px 10px}
+.danger{background:#ef4444;color:white}
+.success{background:#22c55e;color:white}
+.yellow{color:#facc15}
+@media(max-width:370px){.hero h1{font-size:31px}.wheelWrap{width:285px}}
 </style>
 </head>
 
 <body>
+<div class="app">
 
-<div class="loader">
-    <div class="loader-content">
-        <div class="loader-logo">POLISH <span>ENGINEER</span></div>
-        <div class="loader-line"></div>
-    </div>
+<header>
+ <div class="logo">تحدّ<span>اك</span> 🎯</div>
+ <div class="balance">🪙 <span id="coins">0</span></div>
+</header>
+
+<!-- HOME -->
+<section class="page active" id="home">
+ <div class="hero">
+  <div class="heroIcon">🎡</div>
+  <h1>تحدّاك!</h1>
+  <p>لف العجلة، نفّذ التحدي، واجمع أكبر عدد من النقاط.</p>
+  <button class="primary" onclick="openRoom()">🎡 ابدأ التحدي</button>
+ </div>
+
+ <div class="title"><h2>التحديات</h2><small>اختر نوعك</small></div>
+ <div class="grid">
+  <div class="card" onclick="showCategory('speed')"><div class="emoji">⚡</div><b>تحديات سريعة</b><small>أنجزها قبل انتهاء الوقت</small></div>
+  <div class="card" onclick="showCategory('brain')"><div class="emoji">🧠</div><b>ذكاء</b><small>اختبر سرعة تفكيرك</small></div>
+  <div class="card" onclick="showCategory('fun')"><div class="emoji">😂</div><b>مضحكة وآمنة</b><small>ضحك وتحديات خفيفة</small></div>
+  <div class="card" onclick="showCategory('random')"><div class="emoji">🎯</div><b>عشوائية</b><small>المفاجأة في انتظارك</small></div>
+ </div>
+
+ <div class="title"><h2>🔥 تحدي اليوم</h2></div>
+ <div class="item" onclick="dailyChallenge()">
+  <div class="itemIcon">🔥</div><div class="itemMain"><b>تحدي يومي</b><small id="dailyText">اضغط للحصول على تحدي اليوم</small></div><button>🎯</button>
+ </div>
+</section>
+
+<!-- CHALLENGES -->
+<section class="page" id="challenges">
+ <div class="title"><h2>🎯 التحديات</h2><small id="catCount"></small></div>
+ <div class="grid">
+  <div class="card" onclick="showCategory('speed')"><div class="emoji">⚡</div><b>سرعة</b><small>تحديات الوقت</small></div>
+  <div class="card" onclick="showCategory('brain')"><div class="emoji">🧠</div><b>ذكاء</b><small>فكر بسرعة</small></div>
+  <div class="card" onclick="showCategory('focus')"><div class="emoji">🎯</div><b>تركيز</b><small>اختبر تركيزك</small></div>
+  <div class="card" onclick="showCategory('words')"><div class="emoji">🔤</div><b>كلمات</b><small>تحديات لغوية</small></div>
+  <div class="card" onclick="showCategory('group')"><div class="emoji">👥</div><b>جماعية</b><small>شاركوا معًا</small></div>
+  <div class="card" onclick="showCategory('social')"><div class="emoji">💬</div><b>اجتماعية</b><small>خفيفة وآمنة</small></div>
+  <div class="card" onclick="showCategory('surprise')"><div class="emoji">🎁</div><b>مفاجئة</b><small>لا تعرف القادم</small></div>
+  <div class="card" onclick="showCategory('daily')"><div class="emoji">📅</div><b>يومية</b><small>تحدي كل يوم</small></div>
+ </div>
+ <div class="title"><h2 id="categoryTitle">كل التحديات</h2></div>
+ <div class="list" id="challengeList"></div>
+</section>
+
+<!-- MESSAGES -->
+<section class="page" id="messages">
+ <div class="title"><h2>💬 الرسائل</h2><small>الأصدقاء</small></div>
+
+ <div class="item" onclick="openChat('محمد')">
+  <div class="itemIcon">🔥</div><div class="itemMain"><b>محمد</b><small>تحدّاني مرة ثانية؟ 😈</small></div>
+  <span>›</span>
+ </div>
+ <br>
+ <div class="item" onclick="openChat('أحمد')">
+  <div class="itemIcon">⚡</div><div class="itemMain"><b>أحمد</b><small>أرسل لك تحديًا!</small></div>
+  <span>›</span>
+ </div>
+ <br>
+ <div class="item" onclick="openChat('سارة')">
+  <div class="itemIcon">✨</div><div class="itemMain"><b>سارة</b><small>أرسلت كود غرفة</small></div>
+  <span>›</span>
+ </div>
+</section>
+
+<!-- LEADERBOARD -->
+<section class="page" id="leaderboard">
+ <div class="title"><h2>🏆 المتصدرون</h2><small>الترتيب</small></div>
+ <div class="list" id="leaderList"></div>
+</section>
+
+<!-- PROFILE -->
+<section class="page" id="profile">
+ <div class="profile">
+  <div class="bigAvatar" id="profileAvatar">😎</div>
+  <h2 id="profileName">لاعب</h2>
+  <small>عضو في تحدّاك</small>
+  <div class="profileStats">
+   <div class="pstat"><b id="profileScore">0</b><small>نقطة</small></div>
+   <div class="pstat"><b id="profileDone">0</b><small>تحدي</small></div>
+   <div class="pstat"><b id="profileWins">0</b><small>فوز</small></div>
+  </div>
+ </div>
+
+ <div class="title"><h2>⚙️ الإعدادات</h2></div>
+ <div class="list">
+  <div class="item" onclick="editName()"><div class="itemIcon">✏️</div><div class="itemMain"><b>تغيير الاسم</b><small>عدّل اسم اللاعب</small></div><span>›</span></div>
+  <div class="item" onclick="resetData()"><div class="itemIcon">🔄</div><div class="itemMain"><b>إعادة البيانات</b><small>يمسح النقاط المحلية</small></div><span>›</span></div>
+ </div>
+</section>
+
+<!-- GAME -->
+<section class="page" id="game">
+ <div class="topline">
+  <button class="back" onclick="leaveGame()">← خروج</button>
+  <span class="badge">الغرفة <b id="roomCodeLabel">----</b></span>
+ </div>
+
+ <div class="gamePlayers" id="gamePlayers"></div>
+
+ <div class="wheelArea">
+  <div class="wheelWrap">
+   <div class="pointer"></div>
+   <div class="wheel" id="wheel">
+    <div class="wlabel" style="transform:rotate(22.5deg) translateY(-128px)">⚡</div>
+    <div class="wlabel" style="transform:rotate(67.5deg) translateY(-128px)">🧠</div>
+    <div class="wlabel" style="transform:rotate(112.5deg) translateY(-128px)">😂</div>
+    <div class="wlabel" style="transform:rotate(157.5deg) translateY(-128px)">🎯</div>
+    <div class="wlabel" style="transform:rotate(202.5deg) translateY(-128px)">🔤</div>
+    <div class="wlabel" style="transform:rotate(247.5deg) translateY(-128px)">👥</div>
+    <div class="wlabel" style="transform:rotate(292.5deg) translateY(-128px)">🎁</div>
+    <div class="wlabel" style="transform:rotate(337.5deg) translateY(-128px)">🔥</div>
+   </div>
+  </div>
+ </div>
+
+ <button class="spin" id="spinButton" onclick="spin()">🎡 لف العجلة</button>
+
+ <div class="gameInfo">
+  <div class="stat"><small>الجولة</small><b id="round">1</b></div>
+  <div class="stat"><small>نقاطك</small><b id="gameScore">0</b></div>
+ </div>
+
+ <div class="task" id="task">
+  <h2>🎯 التحدي عليك!</h2>
+  <div class="taskText" id="taskText"></div>
+  <button class="complete" onclick="complete()">✅ أنجزت التحدي</button>
+ </div>
+
+ <div class="timerBox" id="timerBox">
+  <small>الوقت المتبقي</small>
+  <div class="timer" id="timer">30</div>
+ </div>
+</section>
+
+<nav class="bottom">
+ <button class="nav active" data-page="home" onclick="page('home',this)"><span>🏠</span>الرئيسية</button>
+ <button class="nav" data-page="challenges" onclick="page('challenges',this)"><span>🎯</span>التحديات</button>
+ <button class="nav" data-page="messages" onclick="page('messages',this)"><span>💬</span>الرسائل</button>
+ <button class="nav" data-page="leaderboard" onclick="page('leaderboard',this)"><span>🏆</span>المتصدرون</button>
+ <button class="nav" data-page="profile" onclick="page('profile',this)"><span>👤</span>حسابي</button>
+</nav>
 </div>
 
-<nav>
-    <div class="logo">POLISH <span>ENGINEER</span></div>
+<!-- ROOM MODAL -->
+<div class="modal" id="roomModal">
+ <div class="modalBox">
+  <h2>🎡 اللعب</h2>
+  <input class="input" id="nameInput" maxlength="18" placeholder="اسمك">
+  <button class="primary" onclick="createRoom()">➕ إنشاء غرفة</button>
+  <div style="text-align:center;color:#777;padding:13px">أو</div>
+  <input class="input" id="joinInput" maxlength="8" placeholder="كود الغرفة">
+  <button class="secondary" onclick="joinRoom()">🚪 دخول غرفة</button>
+  <br><br>
+  <button class="close" style="width:100%" onclick="closeModal('roomModal')">إلغاء</button>
+ </div>
+</div>
 
-    <ul class="nav-links">
-        <li><a href="#home">الرئيسية</a></li>
-        <li><a href="#about">من نحن</a></li>
-        <li><a href="#services">الخدمات</a></li>
-        <li><a href="#work">أعمالنا</a></li>
-        <li><a href="#contact">التواصل</a></li>
-    </ul>
+<!-- DAILY MODAL -->
+<div class="modal" id="dailyModal">
+ <div class="modalBox">
+  <h2>🔥 تحدي اليوم</h2>
+  <div class="taskText" id="dailyModalText"></div>
+  <div class="actions" style="margin-top:15px">
+   <button class="close" onclick="closeModal('dailyModal')">إغلاق</button>
+   <button class="confirm" onclick="finishDaily()">✅ أنجزت</button>
+  </div>
+ </div>
+</div>
 
-    <a href="#contact" class="nav-btn">احجز الآن</a>
-</nav>
+<!-- CHAT MODAL -->
+<div class="modal" id="chatModal">
+ <div class="modalBox">
+  <div class="topline">
+   <h2 id="chatTitle" style="margin:0"></h2>
+   <button class="close" onclick="closeModal('chatModal')">×</button>
+  </div>
+  <div class="chat" id="chat"></div>
+  <div class="chatInput">
+   <input class="input" id="chatInput" placeholder="اكتب رسالة..." onkeydown="if(event.key==='Enter')sendMessage()">
+   <button onclick="sendMessage()">➤</button>
+  </div>
+ </div>
+</div>
 
-<!-- HERO -->
-<section class="hero" id="home">
-    <div class="hero-content">
-        <div class="hero-small">PROFESSIONAL AUTOMOTIVE CARE</div>
-
-        <h1>
-            POLISH<br>
-            <span>ENGINEER</span>
-        </h1>
-
-        <p>
-            عناية احترافية لسيارتك...
-            لأن التفاصيل الصغيرة تصنع الفرق الكبير.
-        </p>
-
-        <div class="buttons">
-            <a href="#services" class="btn btn-gold">اكتشف خدماتنا</a>
-            <a href="#contact" class="btn btn-outline">احجز موعدك</a>
-        </div>
-    </div>
-
-    <div class="scroll">مرر للأسفل ↓</div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-    <div class="about">
-
-        <div class="about-img"></div>
-
-        <div class="about-text">
-            <div class="section-title" style="text-align:right;margin-bottom:20px;">
-                <span>ABOUT US</span>
-                <h2>العناية<br>بمستوى مختلف</h2>
-            </div>
-
-            <p>
-                نقدم تجربة متخصصة في العناية بالسيارات،
-                مع اهتمام بالتفاصيل وجودة التنفيذ، من أول
-                خطوة وحتى استلام سيارتك.
-            </p>
-
-            <div class="stats">
-                <div class="stat">
-                    <strong>4.9★</strong>
-                    <span>تقييم العملاء</span>
-                </div>
-
-                <div class="stat">
-                    <strong>400+</strong>
-                    <span>تقييم</span>
-                </div>
-
-                <div class="stat">
-                    <strong>100%</strong>
-                    <span>اهتمام بالتفاصيل</span>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<!-- SERVICES -->
-<section class="services" id="services">
-
-    <div class="section-title">
-        <span>OUR SERVICES</span>
-        <h2>خدماتنا</h2>
-    </div>
-
-    <div class="service-grid">
-
-        <div class="service">
-            <div class="service-number">01</div>
-            <h3>تلميع السيارات</h3>
-            <p>عناية احترافية بمظهر السيارة وإبراز لمعان الطلاء.</p>
-        </div>
-
-        <div class="service">
-            <div class="service-number">02</div>
-            <h3>العناية الخارجية</h3>
-            <p>تنظيف وعناية دقيقة بالتفاصيل الخارجية للسيارة.</p>
-        </div>
-
-        <div class="service">
-            <div class="service-number">03</div>
-            <h3>العناية الداخلية</h3>
-            <p>تنظيف وترتيب المقصورة الداخلية بعناية.</p>
-        </div>
-
-        <div class="service">
-            <div class="service-number">04</div>
-            <h3>حماية الطلاء</h3>
-            <p>خدمات مخصصة للمحافظة على مظهر الطلاء.</p>
-        </div>
-
-        <div class="service">
-            <div class="service-number">05</div>
-            <h3>تظليل السيارات</h3>
-            <p>عرض خيارات التظليل والخدمات المتوفرة.</p>
-        </div>
-
-        <div class="service">
-            <div class="service-number">06</div>
-            <h3>العناية المتكاملة</h3>
-            <p>حلول متكاملة للعناية بسيارتك حسب احتياجها.</p>
-        </div>
-
-    </div>
-</section>
-
-<!-- BEFORE AFTER -->
-<section>
-
-    <div class="section-title">
-        <span>THE DIFFERENCE</span>
-        <h2>شاهد الفرق بنفسك</h2>
-    </div>
-
-    <div class="before-after" id="compare">
-
-        <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1600&q=80">
-
-        <img class="after"
-             src="https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=1600&q=80">
-
-        <div class="slider" id="slider"></div>
-
-    </div>
-
-</section>
-
-<!-- WORK -->
-<section class="work" id="work">
-
-    <div class="section-title">
-        <span>OUR WORK</span>
-        <h2>أعمالنا</h2>
-    </div>
-
-    <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1000&q=80">
-        <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1000&q=80">
-        <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1000&q=80">
-        <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1000&q=80">
-        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=80">
-        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80">
-    </div>
-
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-
-    <div class="contact-box">
-
-        <div class="section-title">
-            <span>BOOK YOUR VISIT</span>
-            <h2>جاهز تعطي سيارتك العناية التي تستحقها؟</h2>
-        </div>
-
-        <p>
-            تواصل معنا لمعرفة الخدمات المتوفرة وحجز موعدك.
-        </p>
-
-        <div class="buttons">
-
-            <a class="btn btn-gold"
-               href="https://wa.me/966504243448"
-               target="_blank">
-                تواصل عبر واتساب
-            </a>
-
-            <a class="btn btn-outline"
-               href="tel:+966504243448">
-                اتصل الآن
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-<footer>
-    <div>© 2026 POLISH ENGINEER</div>
-    <div>Professional Automotive Care</div>
-</footer>
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
 
 <script>
+/* ==============================
+   STORAGE
+============================== */
+const KEY="tahadak_final_data";
 
-/* BEFORE / AFTER SLIDER */
+let data=JSON.parse(localStorage.getItem(KEY)||"null")||{
+ name:"",
+ avatar:"😎",
+ score:0,
+ done:0,
+ wins:0,
+ coins:0,
+ messages:{},
+ dailyDate:"",
+ dailyDone:false
+};
 
-const compare = document.getElementById("compare");
-const slider = document.getElementById("slider");
-const after = document.querySelector(".after");
-
-let dragging = false;
-
-function moveSlider(x){
-
-    const rect = compare.getBoundingClientRect();
-
-    let position = ((x - rect.left) / rect.width) * 100;
-
-    position = Math.max(0, Math.min(100, position));
-
-    slider.style.left = position + "%";
-    after.style.clipPath = `inset(0 0 0 ${position}%)`;
+function save(){
+ localStorage.setItem(KEY,JSON.stringify(data));
+ updateUI();
 }
 
-slider.addEventListener("mousedown",()=>{
-    dragging=true;
+/* ==============================
+   CHALLENGES
+============================== */
+const challenges={
+ speed:[
+  "اذكر 5 أشياء لونها أزرق خلال 10 ثوانٍ.",
+  "صفق 10 مرات بأسرع ما تستطيع.",
+  "اذكر 5 فواكه خلال 10 ثوانٍ.",
+  "المس شيئًا أحمر موجودًا حولك خلال 10 ثوانٍ.",
+  "اذكر 5 مدن خلال 10 ثوانٍ.",
+  "قل 5 حيوانات بسرعة.",
+  "اذكر 5 أشياء تبدأ بحرف م.",
+  "اذكر 4 أشياء موجودة في الغرفة."
+ ],
+ brain:[
+  "ما الشيء الذي له أسنان ولا يعض؟",
+  "لديك 3 تفاحات وأخذت 2، كم أصبح معك؟",
+  "ما الشيء الذي يمشي بلا أرجل؟",
+  "ما الشيء الذي كلما أخذت منه كبر؟",
+  "اذكر 3 أشياء تستخدم الكهرباء.",
+  "اذكر 4 كلمات تبدأ بحرف س.",
+  "ما الشهر الذي يأتي بعد مارس؟",
+  "اذكر شيئًا يمكن أن يكون مفتوحًا ومغلقًا."
+ ],
+ fun:[
+  "قل جملة عادية بصوت روبوت.",
+  "قل اسمك وكأنك مذيع أخبار.",
+  "اعمل تعبير وجه مضحك لمدة 5 ثوانٍ.",
+  "قل كلمة بطاطس ثلاث مرات بطريقة مختلفة.",
+  "تكلم 10 ثوانٍ بدون استخدام كلمة أنا.",
+  "قل جملة قصيرة وأنت تضحك.",
+  "قل اسم أكلك المفضل بطريقة درامية.",
+  "مثّل أنك فزت ببطولة عالمية."
+ ],
+ focus:[
+  "انظر إلى نقطة ثابتة لمدة 15 ثانية بدون تشتيت.",
+  "اذكر لون ملابسك ثم لون أقرب شيء لك.",
+  "عد من 20 إلى 1 بالعكس.",
+  "اذكر 3 أشياء تراها أمامك.",
+  "حاول ألا تضحك لمدة 10 ثوانٍ.",
+  "كرر الرقم 7 خمس مرات بدون خطأ.",
+  "ركز على صوت واحد حولك لمدة 10 ثوانٍ.",
+  "اذكر آخر ثلاثة أشياء لمستها."
+ ],
+ words:[
+  "قل كلمة تبدأ بحرف ب وتنتهي بحرف ر.",
+  "اذكر 5 كلمات من 3 أحرف.",
+  "قل 4 أسماء تبدأ بحرف ع.",
+  "اذكر كلمة لها أكثر من معنى.",
+  "قل 3 كلمات تنتهي بحرف ن.",
+  "كوّن جملة من 5 كلمات.",
+  "اذكر 5 أشياء تبدأ بحرف ك.",
+  "قل عكس كلمة كبير."
+ ],
+ group:[
+  "كل اللاعبين يقولون لونهم المفضل في نفس الوقت.",
+  "اختاروا كلمة سر مضحكة للجولة.",
+  "كل لاعب يقول شيئًا يحبه.",
+  "اختاروا لاعبًا ليبدأ الجولة القادمة.",
+  "كل لاعب يقول اسم حيوان بسرعة.",
+  "حاولوا العد من 1 إلى 10 بالتتابع بدون تداخل.",
+  "كل لاعب يقول كلمة تبدأ بحرف م.",
+  "اختاروا أكثر لاعب يضحك."
+ ],
+ social:[
+  "اطلب من صاحبك أن يختار لك كلمة عشوائية.",
+  "أرسل لصديق رسالة مضحكة ومحترمة.",
+  "اسأل صديقًا عن أكله المفضل.",
+  "اطلب من أحد أصدقائك اختيار لون لك.",
+  "قل لشخص معك شيئًا إيجابيًا عنه.",
+  "اسأل صاحبك: لو ربحت مبلغًا كبيرًا، ماذا ستشتري أولًا؟",
+  "اطلب من صديقك اختيار رقم من 1 إلى 10.",
+  "شارك نكتة قصيرة ومحترمة مع المجموعة."
+ ],
+ surprise:[
+  "اختر لاعبًا ليعطيك كلمة.",
+  "قل أول شيء يخطر في بالك.",
+  "غيّر مكان جلوسك ثم عد.",
+  "اختر تحديًا من قسم آخر.",
+  "اجعل اللاعب الذي بعدك يختار.",
+  "قل شيئًا لم تجربه من قبل.",
+  "اختر رقمًا عشوائيًا من 1 إلى 20.",
+  "الجميع يصفق 5 مرات."
+ ],
+ daily:[
+  "اذكر شيئًا تعلمته اليوم.",
+  "اذكر شيئًا جعلك تبتسم.",
+  "استخدم كلمة جديدة في جملة.",
+  "اذكر هدفًا صغيرًا تريد إنجازه.",
+  "ساعد شخصًا بشيء بسيط.",
+  "تعلم معلومة جديدة اليوم.",
+  "اذكر أفضل شيء حدث لك اليوم.",
+  "اكتب لنفسك كلمة تشجيعية."
+ ]
+};
+
+const categoryNames={
+ speed:"⚡ تحديات السرعة",
+ brain:"🧠 تحديات الذكاء",
+ fun:"😂 تحديات مضحكة",
+ focus:"🎯 تحديات التركيز",
+ words:"🔤 تحديات الكلمات",
+ group:"👥 تحديات جماعية",
+ social:"💬 تحديات اجتماعية",
+ surprise:"🎁 تحديات مفاجئة",
+ daily:"📅 التحديات اليومية"
+};
+
+const icons={
+ speed:"⚡",brain:"🧠",fun:"😂",focus:"🎯",words:"🔤",
+ group:"👥",social:"💬",surprise:"🎁",daily:"📅"
+};
+
+/* ==============================
+   GAME STATE
+============================== */
+let roomCode="";
+let players=[];
+let spinning=false;
+let rotation=0;
+let current=null;
+let timer=null;
+let timeLeft=30;
+let round=1;
+let currentChat="";
+
+/* ==============================
+   INIT
+============================== */
+function init(){
+ updateUI();
+ renderChallenges("speed");
+ renderLeaderboard();
+ setDaily();
+}
+init();
+
+/* ==============================
+   NAVIGATION
+============================== */
+function page(id,btn){
+ document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ document.querySelectorAll(".nav").forEach(x=>x.classList.remove("active"));
+ if(btn)btn.classList.add("active");
+ else{
+  const n=document.querySelector('.nav[data-page="'+id+'"]');
+  if(n)n.classList.add("active");
+ }
+ scrollTo(0,0);
+}
+
+function openPage(id){
+ page(id);
+}
+
+/* ==============================
+   UI
+============================== */
+function updateUI(){
+ document.getElementById("coins").textContent=data.coins;
+ document.getElementById("profileName").textContent=data.name||"لاعب";
+ document.getElementById("profileScore").textContent=data.score;
+ document.getElementById("profileDone").textContent=data.done;
+ document.getElementById("profileWins").textContent=data.wins;
+ document.getElementById("profileAvatar").textContent=data.avatar;
+ if(document.getElementById("gameScore"))
+  document.getElementById("gameScore").textContent=data.score;
+}
+
+function showToast(t){
+ const el=document.getElementById("toast");
+ el.textContent=t;
+ el.classList.add("show");
+ clearTimeout(window.__toast);
+ window.__toast=setTimeout(()=>el.classList.remove("show"),2300);
+}
+
+function closeModal(id){
+ document.getElementById(id).classList.remove("show");
+}
+
+function openRoom(){
+ document.getElementById("nameInput").value=data.name||"";
+ document.getElementById("roomModal").classList.add("show");
+}
+
+/* ==============================
+   ROOMS
+   Local simulation.
+   ============================== */
+function code(){
+ return Math.floor(1000+Math.random()*9000).toString();
+}
+
+function createRoom(){
+ const name=document.getElementById("nameInput").value.trim();
+ if(!name){showToast("اكتب اسمك أولًا");return}
+ data.name=name;
+ save();
+
+ roomCode=code();
+ players=[
+  {name:name,avatar:data.avatar,score:0},
+  {name:"محمد",avatar:"🔥",score:0},
+  {name:"أحمد",avatar:"⚡",score:0},
+  {name:"سارة",avatar:"✨",score:0}
+ ];
+
+ closeModal("roomModal");
+ startGame();
+ showToast("تم إنشاء الغرفة 🎉");
+}
+
+function joinRoom(){
+ const name=document.getElementById("nameInput").value.trim();
+ const c=document.getElementById("joinInput").value.trim();
+
+ if(!name){showToast("اكتب اسمك أولًا");return}
+ if(c.length<4){showToast("أدخل كود الغرفة");return}
+
+ data.name=name;
+ save();
+ roomCode=c;
+
+ players=[
+  {name:name,avatar:data.avatar,score:0},
+  {name:"لاعب 2",avatar:"🔥",score:0},
+  {name:"لاعب 3",avatar:"⚡",score:0}
+ ];
+
+ closeModal("roomModal");
+ startGame();
+ showToast("تم دخول الغرفة 🎯");
+}
+
+function startGame(){
+ round=1;
+ document.getElementById("round").textContent=round;
+ document.getElementById("roomCodeLabel").textContent=roomCode;
+ renderPlayers();
+ page("game");
+}
+
+function leaveGame(){
+ stopTimer();
+ document.getElementById("task").classList.remove("show");
+ document.getElementById("timerBox").style.display="none";
+ page("home");
+}
+
+function renderPlayers(){
+ const box=document.getElementById("gamePlayers");
+ box.innerHTML="";
+ players.forEach((p,i)=>{
+  const el=document.createElement("div");
+  el.className="gplayer"+(current&&current.player===i?" selected":"");
+  el.innerHTML=`
+   <div class="avatar">${esc(p.avatar)}</div>
+   <small>${esc(p.name)}</small>
+   <small class="yellow">${p.score} نقطة</small>
+  `;
+  box.appendChild(el);
+ });
+}
+
+/* ==============================
+   WHEEL
+============================== */
+function spin(){
+ if(spinning)return;
+
+ spinning=true;
+ current=null;
+ document.getElementById("task").classList.remove("show");
+ document.getElementById("timerBox").style.display="none";
+
+ const btn=document.getElementById("spinButton");
+ btn.disabled=true;
+ btn.textContent="🎡 العجلة تدور...";
+
+ rotation+=1440+Math.floor(Math.random()*1440);
+ document.getElementById("wheel").style.transform=`rotate(${rotation}deg)`;
+
+ setTimeout(()=>{
+  const player=Math.floor(Math.random()*players.length);
+  const cats=Object.keys(challenges);
+  const category=cats[Math.floor(Math.random()*cats.length)];
+  const text=randomChallenge(category);
+
+  current={player,category,text};
+
+  document.getElementById("taskText").innerHTML=
+   `<b style="color:#bc91ff">${esc(players[player].name)}</b><br><br>${esc(text)}`;
+
+  document.getElementById("task").classList.add("show");
+  document.getElementById("timerBox").style.display="block";
+
+  renderPlayers();
+  startTimer();
+
+  btn.disabled=false;
+  btn.textContent="🎡 لف العجلة";
+  spinning=false;
+
+  showToast("العجلة اختارت "+players[player].name+" 🎯");
+ },4600);
+}
+
+function randomChallenge(cat){
+ const a=challenges[cat];
+ return a[Math.floor(Math.random()*a.length)];
+}
+
+function startTimer(){
+ stopTimer();
+ timeLeft=30;
+ document.getElementById("timer").textContent=timeLeft;
+
+ timer=setInterval(()=>{
+  timeLeft--;
+  document.getElementById("timer").textContent=timeLeft;
+  if(timeLeft<=0){
+   stopTimer();
+   document.getElementById("timerBox").style.display="none";
+   showToast("انتهى الوقت ⏰");
+  }
+ },1000);
+}
+
+function stopTimer(){
+ if(timer){clearInterval(timer);timer=null}
+}
+
+function complete(){
+ if(!current)return;
+
+ stopTimer();
+
+ const p=players[current.player];
+ p.score+=100;
+
+ data.score+=100;
+ data.done++;
+ data.coins+=10;
+
+ save();
+
+ document.getElementById("task").classList.remove("show");
+ document.getElementById("timerBox").style.display="none";
+
+ renderPlayers();
+ renderLeaderboard();
+
+ showToast("أحسنت! +100 نقطة و +10 عملات 🏆");
+
+ current=null;
+ round++;
+ document.getElementById("round").textContent=round;
+}
+
+/* ==============================
+   CHALLENGE LIST
+============================== */
+function showCategory(cat){
+ page("challenges");
+ document.getElementById("categoryTitle").textContent=
+  categoryNames[cat]||"🎯 كل التحديات";
+ renderChallenges(cat);
+}
+
+function renderChallenges(cat){
+ const list=document.getElementById("challengeList");
+ const arr=challenges[cat]||Object.values(challenges).flat();
+ document.getElementById("catCount").textContent=arr.length+" تحدي";
+ list.innerHTML="";
+
+ arr.forEach((text,i)=>{
+  const el=document.createElement("div");
+  el.className="item";
+  el.innerHTML=`
+   <div class="itemIcon">${icons[cat]||"🎯"}</div>
+   <div class="itemMain">
+    <b>تحدي ${i+1}</b>
+    <small>${esc(text)}</small>
+   </div>
+   <button onclick="prepareChallenge('${attr(text)}')">🎯</button>
+  `;
+  list.appendChild(el);
+ });
+}
+
+function prepareChallenge(text){
+ openRoom();
+ showToast("بعد دخول الغرفة يمكنك استخدام التحدي");
+}
+
+/* ==============================
+   DAILY
+============================== */
+function todayKey(){
+ const d=new Date();
+ return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+}
+
+function setDaily(){
+ const all=challenges.daily;
+ const index=(new Date().getDate()-1)%all.length;
+ document.getElementById("dailyText").textContent=all[index];
+}
+
+function dailyChallenge(){
+ const all=challenges.daily;
+ const index=(new Date().getDate()-1)%all.length;
+ document.getElementById("dailyModalText").textContent=all[index];
+ document.getElementById("dailyModal").classList.add("show");
+}
+
+function finishDaily(){
+ const key=todayKey();
+ if(data.dailyDate===key&&data.dailyDone){
+  closeModal("dailyModal");
+  showToast("أنجزت تحدي اليوم بالفعل ✅");
+  return;
+ }
+ data.dailyDate=key;
+ data.dailyDone=true;
+ data.score+=75;
+ data.done++;
+ data.coins+=7;
+ save();
+ closeModal("dailyModal");
+ renderLeaderboard();
+ showToast("تحدي اليوم مكتمل! +75 نقطة 🔥");
+}
+
+/* ==============================
+   LEADERBOARD
+============================== */
+function renderLeaderboard(){
+ const list=document.getElementById("leaderList");
+ const names=[
+  {name:"محمد",avatar:"🔥",score:2450},
+  {name:"أحمد",avatar:"⚡",score:2190},
+  {name:"سارة",avatar:"✨",score:1980},
+  {name:data.name||"أنت",avatar:data.avatar,score:data.score}
+ ];
+
+ names.sort((a,b)=>b.score-a.score);
+ list.innerHTML="";
+
+ names.forEach((p,i)=>{
+  const medal=["🥇","🥈","🥉"][i]||(i+1);
+  const el=document.createElement("div");
+  el.className="item";
+  el.innerHTML=`
+   <div class="itemIcon">${medal}</div>
+   <div class="itemMain"><b>${esc(p.name)}</b><small>${p.score} نقطة</small></div>
+   <strong class="yellow">${p.score}</strong>
+  `;
+  list.appendChild(el);
+ });
+}
+
+/* ==============================
+   CHAT
+============================== */
+function openChat(name){
+ currentChat=name;
+ document.getElementById("chatTitle").textContent="💬 "+name;
+ document.getElementById("chatModal").classList.add("show");
+ renderChat();
+}
+
+function renderChat(){
+ const box=document.getElementById("chat");
+ const arr=data.messages[currentChat]||[
+  {from:"them",text:"تحدّاك مرة ثانية؟ 😈"},
+  {from:"them",text:"جاهز للجولة القادمة؟"}
+ ];
+
+ data.messages[currentChat]=arr;
+ box.innerHTML="";
+
+ arr.forEach(m=>{
+  const el=document.createElement("div");
+  el.className="msg "+m.from;
+  el.textContent=m.text;
+  box.appendChild(el);
+ });
+
+ box.scrollTop=box.scrollHeight;
+}
+
+function sendMessage(){
+ const input=document.getElementById("chatInput");
+ const text=input.value.trim();
+ if(!text)return;
+
+ if(!data.messages[currentChat])data.messages[currentChat]=[];
+ data.messages[currentChat].push({from:"me",text});
+ save();
+
+ input.value="";
+ renderChat();
+}
+
+function sendChallengeTo(name){
+ currentChat=name;
+ if(!data.messages[name])data.messages[name]=[];
+ data.messages[name].push({from:"me",text:"🎯 أرسلت لك تحديًا! تحدّاني 😈"});
+ save();
+ openChat(name);
+}
+
+/* ==============================
+   PROFILE
+============================== */
+function editName(){
+ const name=prompt("اكتب اسمك الجديد:",data.name||"لاعب");
+ if(!name||!name.trim())return;
+ data.name=name.trim().slice(0,18);
+ save();
+ showToast("تم تغيير الاسم ✅");
+}
+
+function resetData(){
+ if(!confirm("هل تريد مسح النقاط والعملات والتقدم؟"))return;
+ data={
+  name:data.name,
+  avatar:"😎",
+  score:0,
+  done:0,
+  wins:0,
+  coins:0,
+  messages:{},
+  dailyDate:"",
+  dailyDone:false
+ };
+ save();
+ renderLeaderboard();
+ showToast("تمت إعادة البيانات");
+}
+
+/* ==============================
+   HELPERS
+============================== */
+function esc(v){
+ return String(v)
+  .replaceAll("&","&amp;")
+  .replaceAll("<","&lt;")
+  .replaceAll(">","&gt;")
+  .replaceAll('"',"&quot;")
+  .replaceAll("'","&#039;");
+}
+
+function attr(v){
+ return String(v)
+  .replaceAll("\\","\\\\")
+  .replaceAll("'","\\'");
+}
+
+/* ==============================
+   MODAL BACKDROP
+============================== */
+document.querySelectorAll(".modal").forEach(m=>{
+ m.addEventListener("click",e=>{
+  if(e.target===m)m.classList.remove("show");
+ });
 });
 
-window.addEventListener("mouseup",()=>{
-    dragging=false;
+/* ==============================
+   BACK BUTTON
+============================== */
+window.addEventListener("popstate",()=>{
+ page("home");
 });
 
-window.addEventListener("mousemove",(e)=>{
-    if(dragging){
-        moveSlider(e.clientX);
-    }
-});
-
-slider.addEventListener("touchstart",()=>{
-    dragging=true;
-});
-
-window.addEventListener("touchend",()=>{
-    dragging=false;
-});
-
-window.addEventListener("touchmove",(e)=>{
-    if(dragging){
-        moveSlider(e.touches[0].clientX);
-    }
-});
-
+/* ==============================
+   RANDOM DAILY PREVIEW
+============================== */
+setInterval(()=>{
+ const all=challenges.daily;
+ document.getElementById("dailyText").textContent=
+  all[Math.floor(Math.random()*all.length)];
+},6000);
 </script>
-
 </body>
 </html>
